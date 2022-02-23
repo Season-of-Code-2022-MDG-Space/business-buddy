@@ -70,7 +70,9 @@ class _SearchPageState extends State<SearchPage> {
                   return IconButton(
                     icon: Icon(Icons.search),
                     onPressed: () {
-                      val.queryData(searchcontroller.text).then((value) {
+                      val
+                          .queryData(searchcontroller.text.toLowerCase())
+                          .then((value) {
                         snapshotData = value;
                         setState(() {
                           isFound = true;

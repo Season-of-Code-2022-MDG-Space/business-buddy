@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -37,25 +35,25 @@ class _RegScreenState extends State<RegScreen> {
   final agecontroller = TextEditingController();
   final TextEditingController _controller = TextEditingController();
   var items = [
-    'Agency',
-    'Business Development',
-    'Construction/Trade',
-    'Consulting',
-    'Designer',
-    'Developer(App/Web)',
-    'Digital Marketing',
-    'E-commerce',
-    'Finance/Fin tech',
-    'Franchise',
-    'Marketer',
-    'Manufacturing',
-    'Merchandise',
-    'Product',
-    'Retail',
-    'Sales',
-    'WholeSale',
-    'Web Site(news/affiliate)',
-    'Other'
+    'agency',
+    'business Development',
+    'construction/Trade',
+    'consulting',
+    'designer',
+    'developer(App/Web)',
+    'digital marketing',
+    'e-commerce',
+    'finance/fin tech',
+    'franchise',
+    'marketer',
+    'manufacturing',
+    'merchandise',
+    'product',
+    'retail',
+    'sales',
+    'wholeSale',
+    'web Site(news/affiliate)',
+    'other'
   ];
 
   @override
@@ -203,9 +201,7 @@ class _RegScreenState extends State<RegScreen> {
         if (value!.isEmpty) {
           return (" Conact No. cannot be empty");
         }
-        if (!regex.hasMatch(value)) {
-          return (" Conatct should be atleast 3 characters ");
-        }
+
         return null;
       },
       autofocus: false,

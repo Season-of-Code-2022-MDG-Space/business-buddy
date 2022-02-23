@@ -22,6 +22,7 @@ class _SuggestionPageState extends State<SuggestionPage> {
     // ignore: todo
     // TODO: implement initState
     super.initState();
+    onRefresh(FirebaseAuth.instance.currentUser);
     FirebaseFirestore.instance
         .collection("users")
         .doc(user!.uid)
@@ -32,11 +33,17 @@ class _SuggestionPageState extends State<SuggestionPage> {
     });
   }
 
+  onRefresh(userCred) {
+    setState(() {
+      user = userCred;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.deepPurple,
         title: Text("Search"),
         actions: [
           Center(
@@ -63,7 +70,7 @@ class _SuggestionPageState extends State<SuggestionPage> {
               itemCount: snapshot.data!.docs.length,
               itemBuilder: (context, index) {
                 return Padding(
-                  padding: EdgeInsets.all(15),
+                  padding: EdgeInsets.all(10),
                   child: InkWell(
                     onDoubleTap: () {
                       Navigator.pushNamed(context, '/info');
@@ -78,14 +85,55 @@ class _SuggestionPageState extends State<SuggestionPage> {
                           child: Row(
                             children: [
                               Container(
-                                  child: Text(
-                                      snapshot.data!.docs[index]['firstName'])),
+                                  child: Column(
+                                children: [
+                                  Text(
+                                    snapshot.data!.docs[index]['firstName'] +
+                                        " " +
+                                        snapshot.data!.docs[index]['lastName'],
+                                    style: TextStyle(fontSize: 36),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Row(
+                                    children: [
+                                      Icon(Icons.location_city),
+                                      Text(
+                                        snapshot.data!.docs[index]['city'],
+                                        style: TextStyle(fontSize: 24),
+                                      ),
+                                      SizedBox(
+                                        width: 30,
+                                      ),
+                                      Icon(Icons.cast_for_education),
+                                      Text(
+                                        snapshot.data!.docs[index]['skills']
+                                            .toString()
+                                            .toUpperCase(),
+                                        style: TextStyle(
+                                            fontSize: 24,
+                                            fontWeight: FontWeight.bold),
+                                      )
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  Text(
+                                    snapshot.data!.docs[index]['aboutMe']
+                                            .toString()
+                                            .substring(0, 50) +
+                                        "... ",
+                                    style: TextStyle(fontSize: 28),
+                                  )
+                                ],
+                              )),
                               Container(
                                 width: 250,
-                                height: 180,
+                                height: 400,
                                 child: ClipRect(
                                   child: Image(
-                                    fit: BoxFit.contain,
                                     image: AssetImage(
                                         'assets/images/download.png'),
                                     height: 30,

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -15,9 +13,12 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+  CollectionReference collectionReference =
+      FirebaseFirestore.instance.collection('users');
   final _auth = FirebaseAuth.instance;
   User? user = FirebaseAuth.instance.currentUser;
   UserModel userModel = UserModel();
+  final _formkey = GlobalKey<FormState>();
 
   //It is the First Thing that will be called
   @override
@@ -146,6 +147,7 @@ class _DashboardState extends State<Dashboard> {
               color: Colors.cyanAccent),
           child: SingleChildScrollView(
             child: Form(
+              key: _formkey,
               child: Column(
                 children: <Widget>[
                   Padding(
@@ -430,6 +432,7 @@ class _DashboardState extends State<Dashboard> {
                   ),
                   ElevatedButton(
                       onPressed: () {
+                        updateUser();
                         // User? user = _auth.currentUser;
 
                         // await collectionReference.add({
@@ -455,5 +458,25 @@ class _DashboardState extends State<Dashboard> {
         ))
       ],
     );
+  }
+
+  Future<void> updateUser() {
+    return collectionReference
+        .doc('users')
+        .update({
+          'firstName': namecontroller.text,
+          'email': emailcontroller.text,
+          'age': agecontroller.text,
+          'contact': phonecontroller.text,
+          'city': citycontroller.text,
+          'state': statecontroller.text,
+          'country': countrycontroller.text,
+          'skills': _controller.text,
+          'pastexp': pastexpcontroller.text,
+          'aboutMe': aboutMecontroller.text,
+          'education': educationcontroller.text
+        })
+        .then((value) => Fluttertoast.showToast(msg: "User Updated"))
+        .catchError((error) => print("Failed to update user: $error"));
   }
 }
