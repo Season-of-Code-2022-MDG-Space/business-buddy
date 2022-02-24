@@ -424,7 +424,7 @@ class _RegScreenState extends State<RegScreen> {
                       SizedBox(
                         height: 200,
                         child: Image.asset(
-                          "assets/images/lap_back5.jpg",
+                          "assets/images/bb_logo.jpg",
                           fit: BoxFit.cover,
                         ),
                       ),

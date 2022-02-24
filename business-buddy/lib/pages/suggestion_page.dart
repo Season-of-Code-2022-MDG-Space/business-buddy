@@ -17,6 +17,7 @@ class _SuggestionPageState extends State<SuggestionPage> {
   final _auth = FirebaseAuth.instance;
   User? user = FirebaseAuth.instance.currentUser;
   UserModel userModel = UserModel();
+
   @override
   void initState() {
     // ignore: todo
@@ -69,6 +70,10 @@ class _SuggestionPageState extends State<SuggestionPage> {
             return ListView.builder(
               itemCount: snapshot.data!.docs.length,
               itemBuilder: (context, index) {
+                // if (user!.uid == _auth.currentUser!.uid) {
+                //   return Container(height: 0);
+                // }if
+
                 return Padding(
                   padding: EdgeInsets.all(10),
                   child: InkWell(

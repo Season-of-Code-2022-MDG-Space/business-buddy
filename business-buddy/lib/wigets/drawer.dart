@@ -43,13 +43,12 @@ class _MyDrawerState extends State<MyDrawer> {
                 padding: EdgeInsets.all(0),
                 child: UserAccountsDrawerHeader(
                     margin: EdgeInsets.zero,
-                    accountName:
-                        Text("${userModel.firstName}${userModel.lastName}"),
+                    accountName: Text(
+                        "${userModel.firstName} " " ${userModel.lastName}"),
                     // ignore: prefer_const_constructors
                     accountEmail: Text("${userModel.email}"),
                     currentAccountPicture: CircleAvatar(
-                      backgroundImage:
-                          AssetImage("assets/images/lap_back5.png"),
+                      backgroundImage: AssetImage("assets/images/p6.png"),
                     )
                     // Image.asset("assets/images/lap_back5.jpg"),
                     )),
@@ -62,12 +61,14 @@ class _MyDrawerState extends State<MyDrawer> {
                 color: Colors.white,
               ),
               title: Text(
-                "Home",
+                "Profile",
                 style: TextStyle(fontSize: 13, color: Colors.white),
               ),
             ),
             ListTile(
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, "/about");
+              },
               leading: Icon(
                 Icons.details,
                 color: Colors.white,

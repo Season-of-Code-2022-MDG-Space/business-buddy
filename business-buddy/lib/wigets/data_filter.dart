@@ -18,4 +18,25 @@ class DataFilter extends GetxController {
         .where('skills', isGreaterThanOrEqualTo: queryString)
         .get();
   }
+
+  Future queryData2(String queryString) async {
+    return FirebaseFirestore.instance
+        .collection('users')
+        .where('city', isGreaterThanOrEqualTo: queryString)
+        .get();
+  }
+
+  Future queryData3(String queryString) async {
+    return FirebaseFirestore.instance
+        .collection('users')
+        .where('age', isLessThanOrEqualTo: queryString)
+        .get();
+  }
+
+  Future queryData4(String queryString) async {
+    return FirebaseFirestore.instance
+        .collection('users')
+        .where('pastexp', isGreaterThanOrEqualTo: queryString)
+        .get();
+  }
 }

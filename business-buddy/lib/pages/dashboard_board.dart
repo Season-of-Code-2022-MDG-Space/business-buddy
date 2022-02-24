@@ -171,8 +171,8 @@ class _DashboardState extends State<Dashboard> {
                       },
                       decoration: InputDecoration(
                           prefixIcon: Icon(Icons.supervised_user_circle),
-                          hintText:
-                              ("${userModel.firstName}${userModel.lastName}"),
+                          hintText: ("${userModel.firstName}"
+                              " ${userModel.lastName}"),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(18)),
                           contentPadding: EdgeInsets.all(10)),
@@ -432,7 +432,7 @@ class _DashboardState extends State<Dashboard> {
                   ),
                   ElevatedButton(
                       onPressed: () {
-                        updateUser();
+                        // updateUser();
                         // User? user = _auth.currentUser;
 
                         // await collectionReference.add({
@@ -460,23 +460,23 @@ class _DashboardState extends State<Dashboard> {
     );
   }
 
-  Future<void> updateUser() {
-    return collectionReference
-        .doc('users')
-        .update({
-          'firstName': namecontroller.text,
-          'email': emailcontroller.text,
-          'age': agecontroller.text,
-          'contact': phonecontroller.text,
-          'city': citycontroller.text,
-          'state': statecontroller.text,
-          'country': countrycontroller.text,
-          'skills': _controller.text,
-          'pastexp': pastexpcontroller.text,
-          'aboutMe': aboutMecontroller.text,
-          'education': educationcontroller.text
-        })
-        .then((value) => Fluttertoast.showToast(msg: "User Updated"))
-        .catchError((error) => print("Failed to update user: $error"));
-  }
+  // Future<void> updateUser() {
+  //   return collectionReference
+  //       .doc('users')
+  //       .update({
+  //         'firstName': namecontroller.text,
+  //         'email': emailcontroller.text,
+  //         'age': agecontroller.text,
+  //         'contact': phonecontroller.text,
+  //         'city': citycontroller.text,
+  //         'state': statecontroller.text,
+  //         'country': countrycontroller.text,
+  //         'skills': _controller.text,
+  //         'pastexp': pastexpcontroller.text,
+  //         'aboutMe': aboutMecontroller.text,
+  //         'education': educationcontroller.text
+  //       })
+  //       .then((value) => Fluttertoast.showToast(msg: "User Updated"))
+  //       .catchError((error) =>Fluttertoast.showToast(msg: "Error"));
+  // }
 }
