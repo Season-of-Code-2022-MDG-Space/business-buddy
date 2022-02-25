@@ -77,8 +77,57 @@ class _SuggestionPageState extends State<SuggestionPage> {
                 return Padding(
                   padding: EdgeInsets.all(10),
                   child: InkWell(
-                    onDoubleTap: () {
-                      Navigator.pushNamed(context, '/info');
+                    onTap: () {
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (BuildContext context) {
+                        return Scaffold(
+                          // backgroundColor: Colors.black,
+                          appBar: AppBar(
+                            title: Text("All About " +
+                                snapshot.data!.docs[index]['firstName']),
+                          ),
+                          body: SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                Container(
+                                  child: Image(
+                                    image: AssetImage("assets/images/p6.png"),
+                                    height: 200,
+                                  ),
+                                  height: 200,
+                                ),
+                                SizedBox(
+                                  height: 30,
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      snapshot.data!.docs[index]['firstName'] +
+                                          " " +
+                                          snapshot.data!.docs[index]
+                                              ['lastName'],
+                                      style: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.normal),
+                                    ),
+                                    SizedBox(
+                                      width: 90,
+                                    ),
+                                    Text(
+                                      "Age :" +
+                                          " " +
+                                          snapshot.data!.docs[index]['age'],
+                                      style: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.normal),
+                                    )
+                                  ],
+                                )
+                              ],
+                            ),
+                          ),
+                        );
+                      }));
                     },
                     child: Container(
                       child: FittedBox(
