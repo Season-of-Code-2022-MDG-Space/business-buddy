@@ -20,52 +20,123 @@ class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
     Widget SearchData() {
-      return Expanded(
-        child: ListView.builder(
-            shrinkWrap: true,
-            itemCount: snapshotData.docs.length,
-            itemBuilder: (BuildContext context, int index) {
-              return GestureDetector(
-                child: ListTile(
-                  onTap: () {
-                    Get.to(UserInfo(),
-                        transition: Transition.downToUp,
-                        arguments: snapshotData.docs[index]);
-                  },
-                  leading: CircleAvatar(
-                    backgroundImage: AssetImage('assets/images.download.png'),
+      return Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Expanded(
+          child: ListView.builder(
+              shrinkWrap: true,
+              itemCount: snapshotData.docs.length,
+              itemBuilder: (BuildContext context, int index) {
+                return GestureDetector(
+                  child: ListTile(
+                    minVerticalPadding: 18,
+                    onTap: () {
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (BuildContext context) {
+                        return Scaffold(
+                          // backgroundColor: Colors.black,
+                          appBar: AppBar(
+                            title: Text("All About " +
+                                snapshotData.docs[index]['firstName']),
+                          ),
+                          body: SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                Container(
+                                  child: Image(
+                                    image: AssetImage("assets/images/p6.png"),
+                                    height: 200,
+                                  ),
+                                  height: 200,
+                                ),
+                                SizedBox(
+                                  height: 30,
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      snapshotData.docs[index]['firstName'] +
+                                          " " +
+                                          snapshotData.docs[index]['lastName'],
+                                      style: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.normal),
+                                    ),
+                                    SizedBox(
+                                      width: 90,
+                                    ),
+                                    Text(
+                                      "Age :" +
+                                          " " +
+                                          snapshotData.docs[index]['age'],
+                                      style: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.normal),
+                                    )
+                                  ],
+                                )
+                              ],
+                            ),
+                          ),
+                        );
+                      }));
+                    },
+                    leading: CircleAvatar(
+                      backgroundImage: AssetImage('assets/images.download.png'),
+                    ),
+                    title: Text(
+                      snapshotData.docs[index]['firstName'] +
+                          ' ' +
+                          snapshotData.docs[index]['lastName'],
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    subtitle: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.location_city,
+                              color: Colors.white,
+                            ),
+                            Text(
+                              snapshotData.docs[index]['city'] +
+                                  "                         " +
+                                  snapshotData.docs[index]['skills']
+                                      .toString()
+                                      .toUpperCase(),
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              snapshotData.docs[index]['aboutMe']
+                                      .toString()
+                                      .substring(0, 50) +
+                                  "...",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold),
+                            )
+                          ],
+                        )
+                      ],
+                    ),
                   ),
-                  title: Text(
-                    snapshotData.docs[index]['firstName'] +
-                        ' ' +
-                        snapshotData.docs[index]['lastName'],
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  subtitle: Row(
-                    children: [
-                      Icon(
-                        Icons.location_city,
-                        color: Colors.white,
-                      ),
-                      Text(
-                        snapshotData.docs[index]['city'] +
-                            "                         " +
-                            snapshotData.docs[index]['skills']
-                                .toString()
-                                .toUpperCase(),
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                ),
-              );
-            }),
+                );
+              }),
+        ),
       );
     }
 
@@ -117,6 +188,7 @@ class _SearchPageState extends State<SearchPage> {
     // }
 
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: Colors.black,
         floatingActionButton: FloatingActionButton(
           onPressed: () {
@@ -170,57 +242,64 @@ class _SearchPageState extends State<SearchPage> {
           ),
           backgroundColor: Colors.black,
         ),
-        body: Column(
-          children: [
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  ElevatedButton(
-                      onPressed: () {
-                        setState(() {
-                          citysearch = true;
-                        });
-                      },
-                      child: Text("Search By City")),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  ElevatedButton(
-                      onPressed: () {
-                        setState(() {});
-                      },
-                      child: Text("Search By Age")),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  ElevatedButton(
-                      onPressed: () {
-                        setState(() {});
-                      },
-                      child: Text("Search By Working Hours"))
-                ],
+        body: SingleChildScrollView(
+          child: ListView(
+            shrinkWrap: true,
+            children: [
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            citysearch = true;
+                          });
+                        },
+                        child: Text("Search By City")),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    ElevatedButton(
+                        onPressed: () {
+                          setState(() {});
+                        },
+                        child: Text("Search By Age")),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    ElevatedButton(
+                        onPressed: () {
+                          setState(() {});
+                        },
+                        child: Text("Search By Working Hours"))
+                  ],
+                ),
               ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Container(
-              child: isFound
-                  ? SearchData()
-                  : Container(
-                      child: const Center(
-                        child: Padding(
-                          padding: EdgeInsets.all(80.0),
-                          child: Text(
-                            "Search Here",
-                            style: TextStyle(color: Colors.white, fontSize: 40),
+              SizedBox(
+                height: 20,
+              ),
+              ListView(
+                shrinkWrap: true,
+                children: [
+                  isFound
+                      ? SearchData()
+                      : Container(
+                          child: const Center(
+                            child: Padding(
+                              padding: EdgeInsets.all(80.0),
+                              child: Text(
+                                "Search Here",
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 40),
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                    ),
-            ),
-          ],
+                ],
+              ),
+            ],
+          ),
         ));
   }
 }
