@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:projectt/model/user_model.dart';
 import 'package:projectt/wigets/drawer.dart';
 
@@ -86,50 +87,258 @@ class _SuggestionPageState extends State<SuggestionPage> {
                     onTap: () {
                       Navigator.of(context).push(
                           MaterialPageRoute(builder: (BuildContext context) {
-                        return Scaffold(
-                          // backgroundColor: Colors.black,
-                          appBar: AppBar(
-                            title: Text("All About " +
-                                snapshot.data!.docs[index]['firstName']),
-                          ),
-                          body: SingleChildScrollView(
-                            child: Column(
-                              children: [
-                                Container(
-                                  child: Image(
-                                    image: AssetImage("assets/images/p6.png"),
-                                    height: 200,
-                                  ),
-                                  height: 200,
+                        return MaterialApp(
+                          debugShowCheckedModeBanner: false,
+                          home: Scaffold(
+                            appBar: AppBar(
+                              leading: IconButton(
+                                icon: Icon(
+                                  Icons.arrow_back,
+                                  color: Colors.amber,
                                 ),
-                                SizedBox(
-                                  height: 30,
-                                ),
-                                Row(
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                              title: Center(
+                                  child: Text("All About" +
+                                      " " +
+                                      snapshot.data!.docs[index]['firstName'] +
+                                      " " +
+                                      snapshot.data!.docs[index]['lastName'])),
+                              backgroundColor: Colors.purple,
+                            ),
+                            body: SingleChildScrollView(
+                              child: SafeArea(
+                                child: Column(
                                   children: [
+                                    Container(
+                                      decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                              image: AssetImage(
+                                                  "assets/images/t.png"),
+                                              fit: BoxFit.cover)),
+                                      child: Container(
+                                        width: double.infinity,
+                                        height: 130,
+                                        child: Container(
+                                          alignment: Alignment(0.0, 2.5),
+                                          child: CircleAvatar(
+                                            backgroundImage: NetworkImage(
+                                                "Add you profile DP image URL here "),
+                                            radius: 60.0,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 60,
+                                    ),
                                     Text(
                                       snapshot.data!.docs[index]['firstName'] +
                                           " " +
                                           snapshot.data!.docs[index]
                                               ['lastName'],
                                       style: TextStyle(
-                                          fontSize: 22,
-                                          fontWeight: FontWeight.normal),
+                                          fontSize: 35.0,
+                                          color:
+                                              Color.fromARGB(255, 10, 10, 10),
+                                          letterSpacing: 2.0,
+                                          fontWeight: FontWeight.w400),
                                     ),
                                     SizedBox(
-                                      width: 90,
+                                      height: 10,
                                     ),
                                     Text(
-                                      "Age :" +
-                                          " " +
-                                          snapshot.data!.docs[index]['age'],
+                                      snapshot.data!.docs[index]['city'] +
+                                          "," +
+                                          snapshot.data!.docs[index]['country'],
                                       style: TextStyle(
-                                          fontSize: 22,
-                                          fontWeight: FontWeight.normal),
+                                          fontSize: 18.0,
+                                          color: Colors.black45,
+                                          letterSpacing: 2.0,
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text(
+                                      snapshot.data!.docs[index]['email'],
+                                      style: TextStyle(
+                                          fontSize: 15.0,
+                                          color: Colors.black45,
+                                          letterSpacing: 2.0,
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                                    SizedBox(
+                                      height: 20,
+                                    ),
+                                    Text(
+                                      snapshot.data!.docs[index]['contact'],
+                                      style: TextStyle(
+                                          fontSize: 20.0,
+                                          color: Colors.black45,
+                                          letterSpacing: 2.0,
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Card(
+                                        margin: EdgeInsets.symmetric(
+                                            horizontal: 20.0, vertical: 8.0),
+                                        elevation: 2.0,
+                                        child: Padding(
+                                            padding: EdgeInsets.symmetric(
+                                                vertical: 12, horizontal: 30),
+                                            child: Text(
+                                              snapshot
+                                                  .data!.docs[index]['skills']
+                                                  .toString()
+                                                  .toUpperCase(),
+                                              style: TextStyle(
+                                                  letterSpacing: 2.0,
+                                                  fontWeight: FontWeight.w900),
+                                            ))),
+                                    SizedBox(
+                                      height: 15,
+                                    ),
+                                    Text(
+                                      "        #   " +
+                                          snapshot.data!.docs[index]
+                                              ['education'],
+                                      style: TextStyle(
+                                          fontSize: 18.0,
+                                          color:
+                                              Color.fromARGB(115, 176, 11, 218),
+                                          letterSpacing: 1.0,
+                                          fontWeight: FontWeight.w800),
+                                    ),
+                                    SizedBox(
+                                      height: 15,
+                                    ),
+                                    Text(
+                                      "          & " +
+                                          snapshot.data!.docs[index]
+                                              ['education'],
+                                      style: TextStyle(
+                                          fontSize: 18.0,
+                                          color:
+                                              Color.fromARGB(115, 236, 11, 225),
+                                          letterSpacing: 1.0,
+                                          fontWeight: FontWeight.w800),
+                                    ),
+                                    SizedBox(
+                                      height: 15,
+                                    ),
+                                    Card(
+                                      margin: EdgeInsets.symmetric(
+                                          horizontal: 20.0, vertical: 8.0),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: [
+                                            Expanded(
+                                              child: Column(
+                                                children: [
+                                                  Text(
+                                                    "Age",
+                                                    style: TextStyle(
+                                                        color:
+                                                            Colors.blueAccent,
+                                                        fontSize: 22.0,
+                                                        fontWeight:
+                                                            FontWeight.w600),
+                                                  ),
+                                                  SizedBox(
+                                                    height: 7,
+                                                  ),
+                                                  Text(
+                                                    snapshot.data!.docs[index]
+                                                        ['age'],
+                                                    style: TextStyle(
+                                                        color: Colors.black,
+                                                        fontSize: 22.0,
+                                                        fontWeight:
+                                                            FontWeight.w600),
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                            Expanded(
+                                              child: Column(
+                                                children: [
+                                                  Text(
+                                                    "Profile Views",
+                                                    style: TextStyle(
+                                                        color:
+                                                            Colors.blueAccent,
+                                                        fontSize: 22.0,
+                                                        fontWeight:
+                                                            FontWeight.w600),
+                                                  ),
+                                                  SizedBox(
+                                                    height: 7,
+                                                  ),
+                                                  Text(
+                                                    "2000",
+                                                    style: TextStyle(
+                                                        color: Colors.black,
+                                                        fontSize: 22.0,
+                                                        fontWeight:
+                                                            FontWeight.w600),
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 7,
+                                    ),
+                                    Text(
+                                      "About" +
+                                          " " +
+                                          snapshot.data!.docs[index]
+                                              ['firstName'],
+                                      style: TextStyle(
+                                          color:
+                                              Color.fromARGB(255, 228, 21, 21),
+                                          fontSize: 22.0,
+                                          fontWeight: FontWeight.w900),
+                                    ),
+                                    SizedBox(
+                                      height: 20,
+                                    ),
+                                    Ink(
+                                      child: Container(
+                                        child: Center(
+                                          child: Text(
+                                            snapshot.data!.docs[index]
+                                                ['aboutMe'],
+                                            style: TextStyle(
+                                                color: Colors.purple,
+                                                fontSize: 20),
+                                          ),
+                                        ),
+                                        decoration: BoxDecoration(
+                                            border: Border.all(
+                                                color: Colors.deepPurple),
+                                            borderRadius:
+                                                BorderRadius.circular(12)),
+                                      ),
                                     )
                                   ],
-                                )
-                              ],
+                                ),
+                              ),
+                            ),
+                            floatingActionButton: FloatingActionButton(
+                              onPressed: () {},
+                              child: Icon(Icons.chat),
                             ),
                           ),
                         );
