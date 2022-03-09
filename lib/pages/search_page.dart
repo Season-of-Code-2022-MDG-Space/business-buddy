@@ -30,6 +30,12 @@ class _SearchPageState extends State<SearchPage> {
               shrinkWrap: true,
               itemCount: snapshotData.docs.length,
               itemBuilder: (BuildContext context, int index) {
+                DocumentSnapshot documents = snapshotData.docs[index];
+                if (documents.id == _auth.currentUser!.uid) {
+                  return Container(
+                    height: 0,
+                  );
+                }
                 return GestureDetector(
                   child: ListTile(
                     minVerticalPadding: 18,
@@ -37,11 +43,7 @@ class _SearchPageState extends State<SearchPage> {
                       Navigator.of(context).push(
                           MaterialPageRoute(builder: (BuildContext context) {
                         DocumentSnapshot documents = snapshotData.docs[index];
-                        if (documents.id == _auth.currentUser!.uid) {
-                          return Container(
-                            height: 0,
-                          );
-                        }
+
                         return Scaffold(
                           // backgroundColor: Colors.black,
                           appBar: AppBar(
