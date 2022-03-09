@@ -70,6 +70,12 @@ class _SuggestionPageState extends State<SuggestionPage> {
             return ListView.builder(
               itemCount: snapshot.data!.docs.length,
               itemBuilder: (context, index) {
+                DocumentSnapshot documents = snapshot.data!.docs[index];
+                if (documents.id == _auth.currentUser!.uid) {
+                  return Container(
+                    height: 0,
+                  );
+                }
                 // if (user!.uid == _auth.currentUser!.uid) {
                 //   return Container(height: 0);
                 // }if

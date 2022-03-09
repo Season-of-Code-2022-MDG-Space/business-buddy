@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:projectt/model/user_model.dart';
@@ -15,6 +16,8 @@ class SearchPage extends StatefulWidget {
 class _SearchPageState extends State<SearchPage> {
   final TextEditingController searchcontroller = TextEditingController();
   late QuerySnapshot snapshotData;
+  final _auth = FirebaseAuth.instance;
+  User? user = FirebaseAuth.instance.currentUser;
   bool isFound = false;
   bool citysearch = false;
   @override
@@ -27,6 +30,12 @@ class _SearchPageState extends State<SearchPage> {
               shrinkWrap: true,
               itemCount: snapshotData.docs.length,
               itemBuilder: (BuildContext context, int index) {
+                DocumentSnapshot documents = snapshotData.docs[index];
+                if (documents.id == _auth.currentUser!.uid) {
+                  return Container(
+                    height: 0,
+                  );
+                }
                 return GestureDetector(
                   child: ListTile(
                     minVerticalPadding: 18,
@@ -279,24 +288,26 @@ class _SearchPageState extends State<SearchPage> {
               SizedBox(
                 height: 20,
               ),
-              ListView(
-                shrinkWrap: true,
-                children: [
-                  isFound
-                      ? SearchData()
-                      : Container(
-                          child: const Center(
-                            child: Padding(
-                              padding: EdgeInsets.all(80.0),
-                              child: Text(
-                                "Search Here",
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 40),
+              SingleChildScrollView(
+                child: ListView(
+                  shrinkWrap: true,
+                  children: [
+                    isFound
+                        ? SearchData()
+                        : Container(
+                            child: const Center(
+                              child: Padding(
+                                padding: EdgeInsets.all(80.0),
+                                child: Text(
+                                  "Search Here",
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 40),
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                ],
+                  ],
+                ),
               ),
             ],
           ),

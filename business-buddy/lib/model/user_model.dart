@@ -15,6 +15,8 @@ class UserModel {
   String? pastexp;
   String? aboutMe;
 
+  //constructor
+
   UserModel({
     this.uid,
     this.email,
@@ -49,7 +51,7 @@ class UserModel {
     );
   }
 //sending data to server
-
+//making fields and entering data into it.
   Map<String, dynamic> toMap() {
     return {
       'uid': uid,
