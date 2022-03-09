@@ -45,6 +45,7 @@ class _SearchPageState extends State<SearchPage> {
                         DocumentSnapshot documents = snapshotData.docs[index];
 
                         return MaterialApp(
+                          debugShowCheckedModeBanner: false,
                           home: Scaffold(
                             appBar: AppBar(
                               leading: IconButton(
@@ -285,6 +286,10 @@ class _SearchPageState extends State<SearchPage> {
                                   ],
                                 ),
                               ),
+                            ),
+                            floatingActionButton: FloatingActionButton(
+                              onPressed: () {},
+                              child: Icon(Icons.chat),
                             ),
                           ),
                         );
