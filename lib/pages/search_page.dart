@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:projectt/model/user_model.dart';
@@ -17,6 +18,8 @@ class _SearchPageState extends State<SearchPage> {
   late QuerySnapshot snapshotData;
   bool isFound = false;
   bool citysearch = false;
+  final _auth = FirebaseAuth.instance;
+  User? user = FirebaseAuth.instance.currentUser;
   @override
   Widget build(BuildContext context) {
     Widget SearchData() {
@@ -33,6 +36,12 @@ class _SearchPageState extends State<SearchPage> {
                     onTap: () {
                       Navigator.of(context).push(
                           MaterialPageRoute(builder: (BuildContext context) {
+                        DocumentSnapshot documents = snapshotData.docs[index];
+                        if (documents.id == _auth.currentUser!.uid) {
+                          return Container(
+                            height: 0,
+                          );
+                        }
                         return Scaffold(
                           // backgroundColor: Colors.black,
                           appBar: AppBar(
