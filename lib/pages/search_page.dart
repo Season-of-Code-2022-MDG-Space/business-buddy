@@ -94,7 +94,7 @@ class _SearchPageState extends State<SearchPage> {
                                     Text(
                                       snapshotData.docs[index]['firstName'] +
                                           " " +
-                                          snapshotData.docs[index]['firstName'],
+                                          snapshotData.docs[index]['lastName'],
                                       style: TextStyle(
                                           fontSize: 35.0,
                                           color:

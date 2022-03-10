@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:projectt/pages/about_app.dart';
+import 'package:projectt/pages/chat_users_search_page.dart';
 import 'package:projectt/pages/dashboard_board.dart';
 import 'package:projectt/pages/login_page.dart';
 import 'package:projectt/pages/reg_page.dart';
@@ -35,7 +36,8 @@ class MyApp extends StatelessWidget {
         "/sugg": (context) => const SuggestionPage(),
         "/info": (context) => const UserInfo(),
         "/search": (context) => const SearchPage(),
-        "/about": (context) => const AboutApp()
+        "/about": (context) => const AboutApp(),
+        "/chatUsers": (context) => const ChatSearch()
       },
     );
   }
