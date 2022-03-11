@@ -42,7 +42,7 @@ class _SearchPageState extends State<SearchPage> {
                     onTap: () {
                       Navigator.of(context).push(
                           MaterialPageRoute(builder: (BuildContext context) {
-                        DocumentSnapshot documents = snapshotData.docs[index];
+                        // DocumentSnapshot documents = snapshotData.docs[index];
 
                         return MaterialApp(
                           debugShowCheckedModeBanner: false,
