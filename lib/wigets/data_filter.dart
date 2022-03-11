@@ -40,4 +40,11 @@ class DataFilter extends GetxController {
         .where('pastexp', isGreaterThanOrEqualTo: queryString)
         .get();
   }
+
+  Future queryData5(String queryString) async {
+    return FirebaseFirestore.instance
+        .collection('users')
+        .where('firstName', isGreaterThanOrEqualTo: queryString)
+        .get();
+  }
 }
