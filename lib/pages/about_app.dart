@@ -15,11 +15,11 @@ class AboutApp extends StatelessWidget {
             children: [
               Card(
                   child: Row(
-                children: [
+                children: const [
                   Icon(Icons.star),
                   Flexible(
                     child: Text(
-                      "Business Buddy  is the most trusted network, enabling you to instantly and easily build  connections and find the right career .",
+                      "Business Buddy  is the most trusted network, enabling you to instantly and easily build  connections and find the right partner .",
                       style: TextStyle(fontSize: 15),
                     ),
                   ),
@@ -27,7 +27,7 @@ class AboutApp extends StatelessWidget {
               )),
               Card(
                 child: Row(
-                  children: [
+                  children: const [
                     Icon(Icons.star),
                     Flexible(
                       child: Text(
@@ -40,7 +40,7 @@ class AboutApp extends StatelessWidget {
               ),
               Card(
                 child: Row(
-                  children: [
+                  children: const [
                     Icon(Icons.star),
                     Flexible(
                       child: Text(
@@ -53,7 +53,7 @@ class AboutApp extends StatelessWidget {
               ),
               Card(
                 child: Row(
-                  children: [
+                  children: const [
                     Icon(Icons.star),
                     Flexible(
                       child: Text(
@@ -64,10 +64,10 @@ class AboutApp extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
-              CircleAvatar(
+              const CircleAvatar(
                   radius: 150,
                   foregroundColor: Colors.white,
                   backgroundColor: Colors.white,

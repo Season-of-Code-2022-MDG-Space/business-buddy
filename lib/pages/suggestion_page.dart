@@ -76,7 +76,11 @@ class _SuggestionPageState extends State<SuggestionPage> {
             }
 
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return Text("Loading");
+              return const Center(
+                child: CircularProgressIndicator(
+                  backgroundColor: Colors.blue,
+                ),
+              );
             }
 
             return ListView.builder(
@@ -349,7 +353,7 @@ class _SuggestionPageState extends State<SuggestionPage> {
                             ),
                             floatingActionButton: FloatingActionButton(
                               onPressed: () {},
-                              child: Icon(Icons.chat),
+                              child: const Icon(Icons.chat),
                             ),
                           ),
                         );
@@ -373,31 +377,31 @@ class _SuggestionPageState extends State<SuggestionPage> {
                                         snapshot.data!.docs[index]['lastName'],
                                     style: TextStyle(fontSize: 36),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 10,
                                   ),
                                   Row(
                                     children: [
-                                      Icon(Icons.location_city),
+                                      const Icon(Icons.location_city),
                                       Text(
                                         snapshot.data!.docs[index]['city'],
                                         style: TextStyle(fontSize: 24),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         width: 30,
                                       ),
-                                      Icon(Icons.cast_for_education),
+                                      const Icon(Icons.cast_for_education),
                                       Text(
                                         snapshot.data!.docs[index]['skills']
                                             .toString()
                                             .toUpperCase(),
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             fontSize: 24,
                                             fontWeight: FontWeight.bold),
                                       )
                                     ],
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 20,
                                   ),
                                   Text(
@@ -412,7 +416,7 @@ class _SuggestionPageState extends State<SuggestionPage> {
                               Container(
                                 width: 250,
                                 height: 400,
-                                child: ClipRect(
+                                child: const ClipRect(
                                   child: Image(
                                     image: AssetImage(
                                         'assets/images/download.png'),

@@ -53,14 +53,17 @@ class _ChatsSearchState extends State<ChatsSearch> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Home Screen"),
+        backgroundColor: Colors.deepPurple,
+        title: const Text("Chat with Users"),
       ),
       body: isLoading
           ? Center(
               child: Container(
                 height: size.height / 20,
                 width: size.height / 20,
-                child: CircularProgressIndicator(),
+                child: const CircularProgressIndicator(
+                  backgroundColor: Colors.blue,
+                ),
               ),
             )
           : Column(
@@ -90,8 +93,9 @@ class _ChatsSearchState extends State<ChatsSearch> {
                   height: size.height / 50,
                 ),
                 ElevatedButton(
+                  style: ElevatedButton.styleFrom(primary: Colors.deepPurple),
                   onPressed: onSearch,
-                  child: Text("Search"),
+                  child: const Text("Search"),
                 ),
                 SizedBox(
                   height: size.height / 30,
