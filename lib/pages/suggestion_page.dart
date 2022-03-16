@@ -47,19 +47,19 @@ class _SuggestionPageState extends State<SuggestionPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.deepPurple,
-        title: Text("Search"),
+        title: const Text("Search"),
         actions: [
           Center(
               child: IconButton(
                   onPressed: () {
                     Navigator.pushNamed(context, "/search");
                   },
-                  icon: Icon(Icons.search))),
-          SizedBox(
+                  icon: const Icon(Icons.search))),
+          const SizedBox(
             width: 20,
           ),
           InkWell(
-            child: Icon(
+            child: const Icon(
               Icons.chat,
             ),
             onTap: () {
@@ -72,14 +72,12 @@ class _SuggestionPageState extends State<SuggestionPage> {
           stream: profile.snapshots(),
           builder: (context, snapshot) {
             if (snapshot.hasError) {
-              return Text('Something went wrong');
+              return const Text('Something went wrong');
             }
 
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(
-                child: CircularProgressIndicator(
-                  backgroundColor: Colors.blue,
-                ),
+                child: CircularProgressIndicator(),
               );
             }
 
@@ -97,7 +95,7 @@ class _SuggestionPageState extends State<SuggestionPage> {
                 // }if
 
                 return Padding(
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   child: InkWell(
                     onTap: () {
                       Navigator.of(context).push(
@@ -107,7 +105,7 @@ class _SuggestionPageState extends State<SuggestionPage> {
                           home: Scaffold(
                             appBar: AppBar(
                               leading: IconButton(
-                                icon: Icon(
+                                icon: const Icon(
                                   Icons.arrow_back,
                                   color: Colors.amber,
                                 ),
@@ -128,7 +126,7 @@ class _SuggestionPageState extends State<SuggestionPage> {
                                 child: Column(
                                   children: [
                                     Container(
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                           image: DecorationImage(
                                               image: AssetImage(
                                                   "assets/images/t.png"),
@@ -137,8 +135,8 @@ class _SuggestionPageState extends State<SuggestionPage> {
                                         width: double.infinity,
                                         height: 130,
                                         child: Container(
-                                          alignment: Alignment(0.0, 2.5),
-                                          child: CircleAvatar(
+                                          alignment: const Alignment(0.0, 2.5),
+                                          child: const CircleAvatar(
                                             backgroundImage: NetworkImage(
                                                 "Add you profile DP image URL here "),
                                             radius: 60.0,
@@ -146,7 +144,7 @@ class _SuggestionPageState extends State<SuggestionPage> {
                                         ),
                                       ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 60,
                                     ),
                                     Text(
@@ -154,100 +152,100 @@ class _SuggestionPageState extends State<SuggestionPage> {
                                           " " +
                                           snapshot.data!.docs[index]
                                               ['lastName'],
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           fontSize: 35.0,
                                           color:
                                               Color.fromARGB(255, 10, 10, 10),
                                           letterSpacing: 2.0,
                                           fontWeight: FontWeight.w400),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 10,
                                     ),
                                     Text(
                                       snapshot.data!.docs[index]['city'] +
                                           "," +
                                           snapshot.data!.docs[index]['country'],
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           fontSize: 18.0,
                                           color: Colors.black45,
                                           letterSpacing: 2.0,
                                           fontWeight: FontWeight.w600),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 10,
                                     ),
                                     Text(
                                       snapshot.data!.docs[index]['email'],
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           fontSize: 15.0,
                                           color: Colors.black45,
                                           letterSpacing: 2.0,
                                           fontWeight: FontWeight.w600),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 20,
                                     ),
                                     Text(
                                       snapshot.data!.docs[index]['contact'],
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           fontSize: 20.0,
                                           color: Colors.black45,
                                           letterSpacing: 2.0,
                                           fontWeight: FontWeight.w600),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 10,
                                     ),
                                     Card(
-                                        margin: EdgeInsets.symmetric(
+                                        margin: const EdgeInsets.symmetric(
                                             horizontal: 20.0, vertical: 8.0),
                                         elevation: 2.0,
                                         child: Padding(
-                                            padding: EdgeInsets.symmetric(
+                                            padding: const EdgeInsets.symmetric(
                                                 vertical: 12, horizontal: 30),
                                             child: Text(
                                               snapshot
                                                   .data!.docs[index]['skills']
                                                   .toString()
                                                   .toUpperCase(),
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                   letterSpacing: 2.0,
                                                   fontWeight: FontWeight.w900),
                                             ))),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 15,
                                     ),
                                     Text(
                                       "        #   " +
                                           snapshot.data!.docs[index]
                                               ['education'],
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           fontSize: 18.0,
                                           color:
                                               Color.fromARGB(115, 176, 11, 218),
                                           letterSpacing: 1.0,
                                           fontWeight: FontWeight.w800),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 15,
                                     ),
                                     Text(
                                       "          & " +
                                           snapshot.data!.docs[index]
                                               ['education'],
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           fontSize: 18.0,
                                           color:
                                               Color.fromARGB(115, 236, 11, 225),
                                           letterSpacing: 1.0,
                                           fontWeight: FontWeight.w800),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 15,
                                     ),
                                     Card(
-                                      margin: EdgeInsets.symmetric(
+                                      margin: const EdgeInsets.symmetric(
                                           horizontal: 20.0, vertical: 8.0),
                                       child: Padding(
                                         padding: const EdgeInsets.all(8.0),
@@ -258,7 +256,7 @@ class _SuggestionPageState extends State<SuggestionPage> {
                                             Expanded(
                                               child: Column(
                                                 children: [
-                                                  Text(
+                                                  const Text(
                                                     "Age",
                                                     style: TextStyle(
                                                         color:
@@ -267,13 +265,13 @@ class _SuggestionPageState extends State<SuggestionPage> {
                                                         fontWeight:
                                                             FontWeight.w600),
                                                   ),
-                                                  SizedBox(
+                                                  const SizedBox(
                                                     height: 7,
                                                   ),
                                                   Text(
                                                     snapshot.data!.docs[index]
                                                         ['age'],
-                                                    style: TextStyle(
+                                                    style: const TextStyle(
                                                         color: Colors.black,
                                                         fontSize: 22.0,
                                                         fontWeight:
@@ -284,7 +282,7 @@ class _SuggestionPageState extends State<SuggestionPage> {
                                             ),
                                             Expanded(
                                               child: Column(
-                                                children: [
+                                                children: const [
                                                   Text(
                                                     "Profile Views",
                                                     style: TextStyle(
@@ -312,7 +310,7 @@ class _SuggestionPageState extends State<SuggestionPage> {
                                         ),
                                       ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 7,
                                     ),
                                     Text(
@@ -320,13 +318,13 @@ class _SuggestionPageState extends State<SuggestionPage> {
                                           " " +
                                           snapshot.data!.docs[index]
                                               ['firstName'],
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           color:
                                               Color.fromARGB(255, 228, 21, 21),
                                           fontSize: 22.0,
                                           fontWeight: FontWeight.w900),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 20,
                                     ),
                                     Ink(
@@ -335,7 +333,7 @@ class _SuggestionPageState extends State<SuggestionPage> {
                                           child: Text(
                                             snapshot.data!.docs[index]
                                                 ['aboutMe'],
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 color: Colors.purple,
                                                 fontSize: 20),
                                           ),
@@ -352,7 +350,9 @@ class _SuggestionPageState extends State<SuggestionPage> {
                               ),
                             ),
                             floatingActionButton: FloatingActionButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.pushNamed(context, "/chatUsers");
+                              },
                               child: const Icon(Icons.chat),
                             ),
                           ),
@@ -365,7 +365,7 @@ class _SuggestionPageState extends State<SuggestionPage> {
                           color: Colors.white,
                           elevation: 10,
                           borderRadius: BorderRadius.circular(22),
-                          shadowColor: Color(0x802196F3),
+                          shadowColor: const Color(0x802196F3),
                           child: Row(
                             children: [
                               Container(
@@ -375,7 +375,7 @@ class _SuggestionPageState extends State<SuggestionPage> {
                                     snapshot.data!.docs[index]['firstName'] +
                                         " " +
                                         snapshot.data!.docs[index]['lastName'],
-                                    style: TextStyle(fontSize: 36),
+                                    style: const TextStyle(fontSize: 36),
                                   ),
                                   const SizedBox(
                                     height: 10,
@@ -385,7 +385,7 @@ class _SuggestionPageState extends State<SuggestionPage> {
                                       const Icon(Icons.location_city),
                                       Text(
                                         snapshot.data!.docs[index]['city'],
-                                        style: TextStyle(fontSize: 24),
+                                        style: const TextStyle(fontSize: 24),
                                       ),
                                       const SizedBox(
                                         width: 30,
@@ -409,7 +409,7 @@ class _SuggestionPageState extends State<SuggestionPage> {
                                             .toString()
                                             .substring(0, 50) +
                                         "... ",
-                                    style: TextStyle(fontSize: 28),
+                                    style: const TextStyle(fontSize: 28),
                                   )
                                 ],
                               )),

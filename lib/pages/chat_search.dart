@@ -116,17 +116,18 @@ class _ChatsSearchState extends State<ChatsSearch> {
                             ),
                           );
                         },
-                        leading: Icon(Icons.account_box, color: Colors.black),
+                        leading:
+                            const Icon(Icons.account_box, color: Colors.black),
                         title: Text(
                           userMap!['firstName'],
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.black,
                             fontSize: 17,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
                         subtitle: Text(userMap!['email']),
-                        trailing: Icon(Icons.chat, color: Colors.black),
+                        trailing: const Icon(Icons.chat, color: Colors.black),
                       )
                     : Container(),
               ],

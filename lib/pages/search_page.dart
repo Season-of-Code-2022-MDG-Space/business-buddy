@@ -49,7 +49,7 @@ class _SearchPageState extends State<SearchPage> {
                           home: Scaffold(
                             appBar: AppBar(
                               leading: IconButton(
-                                icon: Icon(
+                                icon: const Icon(
                                   Icons.arrow_back,
                                   color: Colors.amber,
                                 ),
@@ -70,7 +70,7 @@ class _SearchPageState extends State<SearchPage> {
                                 child: Column(
                                   children: [
                                     Container(
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                           image: DecorationImage(
                                               image: AssetImage(
                                                   "assets/images/t.png"),
@@ -79,8 +79,8 @@ class _SearchPageState extends State<SearchPage> {
                                         width: double.infinity,
                                         height: 130,
                                         child: Container(
-                                          alignment: Alignment(0.0, 2.5),
-                                          child: CircleAvatar(
+                                          alignment: const Alignment(0.0, 2.5),
+                                          child: const CircleAvatar(
                                             backgroundImage: NetworkImage(
                                                 "Add you profile DP image URL here "),
                                             radius: 60.0,
@@ -88,104 +88,104 @@ class _SearchPageState extends State<SearchPage> {
                                         ),
                                       ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 60,
                                     ),
                                     Text(
                                       snapshotData.docs[index]['firstName'] +
                                           " " +
                                           snapshotData.docs[index]['lastName'],
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           fontSize: 35.0,
                                           color:
                                               Color.fromARGB(255, 10, 10, 10),
                                           letterSpacing: 2.0,
                                           fontWeight: FontWeight.w400),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 10,
                                     ),
                                     Text(
                                       snapshotData.docs[index]['city'] +
                                           "," +
                                           snapshotData.docs[index]['country'],
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           fontSize: 18.0,
                                           color: Colors.black45,
                                           letterSpacing: 2.0,
                                           fontWeight: FontWeight.w600),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 10,
                                     ),
                                     Text(
                                       snapshotData.docs[index]['email'],
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           fontSize: 15.0,
                                           color: Colors.black45,
                                           letterSpacing: 2.0,
                                           fontWeight: FontWeight.w600),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 20,
                                     ),
                                     Text(
                                       snapshotData.docs[index]['contact'],
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           fontSize: 20.0,
                                           color: Colors.black45,
                                           letterSpacing: 2.0,
                                           fontWeight: FontWeight.w600),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 10,
                                     ),
                                     Card(
-                                        margin: EdgeInsets.symmetric(
+                                        margin: const EdgeInsets.symmetric(
                                             horizontal: 20.0, vertical: 8.0),
                                         elevation: 2.0,
                                         child: Padding(
-                                            padding: EdgeInsets.symmetric(
+                                            padding: const EdgeInsets.symmetric(
                                                 vertical: 12, horizontal: 30),
                                             child: Text(
                                               snapshotData.docs[index]['skills']
                                                   .toString()
                                                   .toUpperCase(),
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                   letterSpacing: 2.0,
                                                   fontWeight: FontWeight.w900),
                                             ))),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 15,
                                     ),
                                     Text(
                                       "        #   " +
                                           snapshotData.docs[index]['education'],
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           fontSize: 18.0,
                                           color:
                                               Color.fromARGB(115, 176, 11, 218),
                                           letterSpacing: 1.0,
                                           fontWeight: FontWeight.w800),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 15,
                                     ),
                                     Text(
                                       "          & " +
                                           snapshotData.docs[index]['education'],
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           fontSize: 18.0,
                                           color:
                                               Color.fromARGB(115, 236, 11, 225),
                                           letterSpacing: 1.0,
                                           fontWeight: FontWeight.w800),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 15,
                                     ),
                                     Card(
-                                      margin: EdgeInsets.symmetric(
+                                      margin: const EdgeInsets.symmetric(
                                           horizontal: 20.0, vertical: 8.0),
                                       child: Padding(
                                         padding: const EdgeInsets.all(8.0),
@@ -196,7 +196,7 @@ class _SearchPageState extends State<SearchPage> {
                                             Expanded(
                                               child: Column(
                                                 children: [
-                                                  Text(
+                                                  const Text(
                                                     "Age",
                                                     style: TextStyle(
                                                         color:
@@ -205,13 +205,13 @@ class _SearchPageState extends State<SearchPage> {
                                                         fontWeight:
                                                             FontWeight.w600),
                                                   ),
-                                                  SizedBox(
+                                                  const SizedBox(
                                                     height: 7,
                                                   ),
                                                   Text(
                                                     snapshotData.docs[index]
                                                         ['age'],
-                                                    style: TextStyle(
+                                                    style: const TextStyle(
                                                         color: Colors.black,
                                                         fontSize: 22.0,
                                                         fontWeight:
@@ -222,7 +222,7 @@ class _SearchPageState extends State<SearchPage> {
                                             ),
                                             Expanded(
                                               child: Column(
-                                                children: [
+                                                children: const [
                                                   Text(
                                                     "Profile Views",
                                                     style: TextStyle(
@@ -250,20 +250,20 @@ class _SearchPageState extends State<SearchPage> {
                                         ),
                                       ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 7,
                                     ),
                                     Text(
                                       "About" +
                                           " " +
                                           snapshotData.docs[index]['firstName'],
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           color:
                                               Color.fromARGB(255, 228, 21, 21),
                                           fontSize: 22.0,
                                           fontWeight: FontWeight.w900),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 20,
                                     ),
                                     Ink(
@@ -271,7 +271,7 @@ class _SearchPageState extends State<SearchPage> {
                                         child: Center(
                                           child: Text(
                                             snapshotData.docs[index]['aboutMe'],
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 color: Colors.purple,
                                                 fontSize: 20),
                                           ),
@@ -289,20 +289,20 @@ class _SearchPageState extends State<SearchPage> {
                             ),
                             floatingActionButton: FloatingActionButton(
                               onPressed: () {},
-                              child: Icon(Icons.chat),
+                              child: const Icon(Icons.chat),
                             ),
                           ),
                         );
                       }));
                     },
-                    leading: CircleAvatar(
+                    leading: const CircleAvatar(
                       backgroundImage: AssetImage('assets/images.download.png'),
                     ),
                     title: Text(
                       snapshotData.docs[index]['firstName'] +
                           ' ' +
                           snapshotData.docs[index]['lastName'],
-                      style: TextStyle(
+                      style: const TextStyle(
                           color: Colors.white,
                           fontSize: 15,
                           fontWeight: FontWeight.bold),
@@ -311,7 +311,7 @@ class _SearchPageState extends State<SearchPage> {
                       children: [
                         Row(
                           children: [
-                            Icon(
+                            const Icon(
                               Icons.location_city,
                               color: Colors.white,
                             ),
@@ -321,14 +321,14 @@ class _SearchPageState extends State<SearchPage> {
                                   snapshotData.docs[index]['skills']
                                       .toString()
                                       .toUpperCase(),
-                              style: TextStyle(
+                              style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 12,
                                   fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         Row(
@@ -338,7 +338,7 @@ class _SearchPageState extends State<SearchPage> {
                                       .toString()
                                       .substring(0, 50) +
                                   "...",
-                              style: TextStyle(
+                              style: const TextStyle(
                                   color: Colors.white,
                                   fontSize: 12,
                                   fontWeight: FontWeight.bold),
@@ -363,11 +363,11 @@ class _SearchPageState extends State<SearchPage> {
               isFound = false;
             });
           },
-          child: Icon(Icons.clear),
+          child: const Icon(Icons.clear),
         ),
         appBar: AppBar(
           leading: IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back,
               color: Colors.amber,
             ),
@@ -380,7 +380,7 @@ class _SearchPageState extends State<SearchPage> {
                 init: DataFilter(),
                 builder: (val) {
                   return IconButton(
-                    icon: Icon(Icons.search),
+                    icon: const Icon(Icons.search),
                     onPressed: () {
                       val
                           .queryData(searchcontroller.text.toLowerCase())
@@ -397,7 +397,7 @@ class _SearchPageState extends State<SearchPage> {
                 init: DataFilter(),
                 builder: (val) {
                   return IconButton(
-                    icon: Icon(Icons.location_city),
+                    icon: const Icon(Icons.location_city),
                     onPressed: () {
                       val.queryData2(searchcontroller.text).then((value) {
                         snapshotData = value;
@@ -410,8 +410,8 @@ class _SearchPageState extends State<SearchPage> {
                 }),
           ],
           title: TextField(
-            style: TextStyle(color: Colors.white),
-            decoration: InputDecoration(
+            style: const TextStyle(color: Colors.white),
+            decoration: const InputDecoration(
                 hintText: "Search By Skills",
                 hintStyle: TextStyle(color: Colors.white)),
             controller: searchcontroller,
@@ -432,27 +432,27 @@ class _SearchPageState extends State<SearchPage> {
                             citysearch = true;
                           });
                         },
-                        child: Text("Search By City")),
-                    SizedBox(
+                        child: const Text("Search By City")),
+                    const SizedBox(
                       width: 10,
                     ),
                     ElevatedButton(
                         onPressed: () {
                           setState(() {});
                         },
-                        child: Text("Search By Age")),
-                    SizedBox(
+                        child: const Text("Search By Age")),
+                    const SizedBox(
                       width: 10,
                     ),
                     ElevatedButton(
                         onPressed: () {
                           setState(() {});
                         },
-                        child: Text("Search By Working Hours"))
+                        child: const Text("Search By Working Hours"))
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               ListView(
