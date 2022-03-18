@@ -23,333 +23,346 @@ class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
     Widget SearchData() {
-      return Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Expanded(
-          child: ListView.builder(
-              shrinkWrap: true,
-              itemCount: snapshotData.docs.length,
-              itemBuilder: (BuildContext context, int index) {
-                DocumentSnapshot documents = snapshotData.docs[index];
-                if (documents.id == _auth.currentUser!.uid) {
-                  return Container(
-                    height: 0,
-                  );
-                }
-                return GestureDetector(
-                  child: ListTile(
-                    minVerticalPadding: 18,
-                    onTap: () {
-                      Navigator.of(context).push(
-                          MaterialPageRoute(builder: (BuildContext context) {
-                        // DocumentSnapshot documents = snapshotData.docs[index];
+      return SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Expanded(
+            child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: snapshotData.docs.length,
+                itemBuilder: (BuildContext context, int index) {
+                  DocumentSnapshot documents = snapshotData.docs[index];
+                  if (documents.id == _auth.currentUser!.uid) {
+                    return Container(
+                      height: 0,
+                    );
+                  }
+                  return GestureDetector(
+                    child: ListTile(
+                      minVerticalPadding: 18,
+                      onTap: () {
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (BuildContext context) {
+                          // DocumentSnapshot documents = snapshotData.docs[index];
 
-                        return MaterialApp(
-                          debugShowCheckedModeBanner: false,
-                          home: Scaffold(
-                            appBar: AppBar(
-                              leading: IconButton(
-                                icon: const Icon(
-                                  Icons.arrow_back,
-                                  color: Colors.amber,
+                          return MaterialApp(
+                            debugShowCheckedModeBanner: false,
+                            home: Scaffold(
+                              appBar: AppBar(
+                                leading: IconButton(
+                                  icon: const Icon(
+                                    Icons.arrow_back,
+                                    color: Colors.amber,
+                                  ),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
                                 ),
-                                onPressed: () {
-                                  Navigator.of(context).pop();
-                                },
+                                title: Center(
+                                    child: Text("All About" +
+                                        " " +
+                                        snapshotData.docs[index]['firstName'] +
+                                        " " +
+                                        snapshotData.docs[index]['lastName'])),
+                                backgroundColor: Colors.purple,
                               ),
-                              title: Center(
-                                  child: Text("All About" +
-                                      " " +
-                                      snapshotData.docs[index]['firstName'] +
-                                      " " +
-                                      snapshotData.docs[index]['lastName'])),
-                              backgroundColor: Colors.purple,
-                            ),
-                            body: SingleChildScrollView(
-                              child: SafeArea(
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      decoration: const BoxDecoration(
-                                          image: DecorationImage(
-                                              image: AssetImage(
-                                                  "assets/images/t.png"),
-                                              fit: BoxFit.cover)),
-                                      child: Container(
-                                        width: double.infinity,
-                                        height: 130,
+                              body: SingleChildScrollView(
+                                child: SafeArea(
+                                  child: Column(
+                                    children: [
+                                      Container(
+                                        decoration: const BoxDecoration(
+                                            image: DecorationImage(
+                                                image: AssetImage(
+                                                    "assets/images/t.png"),
+                                                fit: BoxFit.cover)),
                                         child: Container(
-                                          alignment: const Alignment(0.0, 2.5),
-                                          child: const CircleAvatar(
-                                            backgroundImage: NetworkImage(
-                                                "Add you profile DP image URL here "),
-                                            radius: 60.0,
+                                          width: double.infinity,
+                                          height: 130,
+                                          child: Container(
+                                            alignment:
+                                                const Alignment(0.0, 2.5),
+                                            child: const CircleAvatar(
+                                              backgroundImage: NetworkImage(
+                                                  "Add you profile DP image URL here "),
+                                              radius: 60.0,
+                                            ),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                    const SizedBox(
-                                      height: 60,
-                                    ),
-                                    Text(
-                                      snapshotData.docs[index]['firstName'] +
-                                          " " +
-                                          snapshotData.docs[index]['lastName'],
-                                      style: const TextStyle(
-                                          fontSize: 35.0,
-                                          color:
-                                              Color.fromARGB(255, 10, 10, 10),
-                                          letterSpacing: 2.0,
-                                          fontWeight: FontWeight.w400),
-                                    ),
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text(
-                                      snapshotData.docs[index]['city'] +
-                                          "," +
-                                          snapshotData.docs[index]['country'],
-                                      style: const TextStyle(
-                                          fontSize: 18.0,
-                                          color: Colors.black45,
-                                          letterSpacing: 2.0,
-                                          fontWeight: FontWeight.w600),
-                                    ),
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text(
-                                      snapshotData.docs[index]['email'],
-                                      style: const TextStyle(
-                                          fontSize: 15.0,
-                                          color: Colors.black45,
-                                          letterSpacing: 2.0,
-                                          fontWeight: FontWeight.w600),
-                                    ),
-                                    const SizedBox(
-                                      height: 20,
-                                    ),
-                                    Text(
-                                      snapshotData.docs[index]['contact'],
-                                      style: const TextStyle(
-                                          fontSize: 20.0,
-                                          color: Colors.black45,
-                                          letterSpacing: 2.0,
-                                          fontWeight: FontWeight.w600),
-                                    ),
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
-                                    Card(
+                                      const SizedBox(
+                                        height: 60,
+                                      ),
+                                      Text(
+                                        snapshotData.docs[index]['firstName'] +
+                                            " " +
+                                            snapshotData.docs[index]
+                                                ['lastName'],
+                                        style: const TextStyle(
+                                            fontSize: 35.0,
+                                            color:
+                                                Color.fromARGB(255, 10, 10, 10),
+                                            letterSpacing: 2.0,
+                                            fontWeight: FontWeight.w400),
+                                      ),
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
+                                      Text(
+                                        snapshotData.docs[index]['city'] +
+                                            "," +
+                                            snapshotData.docs[index]['country'],
+                                        style: const TextStyle(
+                                            fontSize: 18.0,
+                                            color: Colors.black45,
+                                            letterSpacing: 2.0,
+                                            fontWeight: FontWeight.w600),
+                                      ),
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
+                                      Text(
+                                        snapshotData.docs[index]['email'],
+                                        style: const TextStyle(
+                                            fontSize: 15.0,
+                                            color: Colors.black45,
+                                            letterSpacing: 2.0,
+                                            fontWeight: FontWeight.w600),
+                                      ),
+                                      const SizedBox(
+                                        height: 20,
+                                      ),
+                                      Text(
+                                        snapshotData.docs[index]['contact'],
+                                        style: const TextStyle(
+                                            fontSize: 20.0,
+                                            color: Colors.black45,
+                                            letterSpacing: 2.0,
+                                            fontWeight: FontWeight.w600),
+                                      ),
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
+                                      Card(
+                                          margin: const EdgeInsets.symmetric(
+                                              horizontal: 20.0, vertical: 8.0),
+                                          elevation: 2.0,
+                                          child: Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 12,
+                                                      horizontal: 30),
+                                              child: Text(
+                                                snapshotData.docs[index]
+                                                        ['skills']
+                                                    .toString()
+                                                    .toUpperCase(),
+                                                style: const TextStyle(
+                                                    letterSpacing: 2.0,
+                                                    fontWeight:
+                                                        FontWeight.w900),
+                                              ))),
+                                      const SizedBox(
+                                        height: 15,
+                                      ),
+                                      Text(
+                                        "        #   " +
+                                            snapshotData.docs[index]
+                                                ['education'],
+                                        style: const TextStyle(
+                                            fontSize: 18.0,
+                                            color: Color.fromARGB(
+                                                115, 176, 11, 218),
+                                            letterSpacing: 1.0,
+                                            fontWeight: FontWeight.w800),
+                                      ),
+                                      const SizedBox(
+                                        height: 15,
+                                      ),
+                                      Text(
+                                        "          & " +
+                                            snapshotData.docs[index]
+                                                ['education'],
+                                        style: const TextStyle(
+                                            fontSize: 18.0,
+                                            color: Color.fromARGB(
+                                                115, 236, 11, 225),
+                                            letterSpacing: 1.0,
+                                            fontWeight: FontWeight.w800),
+                                      ),
+                                      const SizedBox(
+                                        height: 15,
+                                      ),
+                                      Card(
                                         margin: const EdgeInsets.symmetric(
                                             horizontal: 20.0, vertical: 8.0),
-                                        elevation: 2.0,
                                         child: Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                vertical: 12, horizontal: 30),
-                                            child: Text(
-                                              snapshotData.docs[index]['skills']
-                                                  .toString()
-                                                  .toUpperCase(),
-                                              style: const TextStyle(
-                                                  letterSpacing: 2.0,
-                                                  fontWeight: FontWeight.w900),
-                                            ))),
-                                    const SizedBox(
-                                      height: 15,
-                                    ),
-                                    Text(
-                                      "        #   " +
-                                          snapshotData.docs[index]['education'],
-                                      style: const TextStyle(
-                                          fontSize: 18.0,
-                                          color:
-                                              Color.fromARGB(115, 176, 11, 218),
-                                          letterSpacing: 1.0,
-                                          fontWeight: FontWeight.w800),
-                                    ),
-                                    const SizedBox(
-                                      height: 15,
-                                    ),
-                                    Text(
-                                      "          & " +
-                                          snapshotData.docs[index]['education'],
-                                      style: const TextStyle(
-                                          fontSize: 18.0,
-                                          color:
-                                              Color.fromARGB(115, 236, 11, 225),
-                                          letterSpacing: 1.0,
-                                          fontWeight: FontWeight.w800),
-                                    ),
-                                    const SizedBox(
-                                      height: 15,
-                                    ),
-                                    Card(
-                                      margin: const EdgeInsets.symmetric(
-                                          horizontal: 20.0, vertical: 8.0),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceEvenly,
-                                          children: [
-                                            Expanded(
-                                              child: Column(
-                                                children: [
-                                                  const Text(
-                                                    "Age",
-                                                    style: TextStyle(
-                                                        color:
-                                                            Colors.blueAccent,
-                                                        fontSize: 22.0,
-                                                        fontWeight:
-                                                            FontWeight.w600),
-                                                  ),
-                                                  const SizedBox(
-                                                    height: 7,
-                                                  ),
-                                                  Text(
-                                                    snapshotData.docs[index]
-                                                        ['age'],
-                                                    style: const TextStyle(
-                                                        color: Colors.black,
-                                                        fontSize: 22.0,
-                                                        fontWeight:
-                                                            FontWeight.w600),
-                                                  )
-                                                ],
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceEvenly,
+                                            children: [
+                                              Expanded(
+                                                child: Column(
+                                                  children: [
+                                                    const Text(
+                                                      "Age",
+                                                      style: TextStyle(
+                                                          color:
+                                                              Colors.blueAccent,
+                                                          fontSize: 22.0,
+                                                          fontWeight:
+                                                              FontWeight.w600),
+                                                    ),
+                                                    const SizedBox(
+                                                      height: 7,
+                                                    ),
+                                                    Text(
+                                                      snapshotData.docs[index]
+                                                          ['age'],
+                                                      style: const TextStyle(
+                                                          color: Colors.black,
+                                                          fontSize: 22.0,
+                                                          fontWeight:
+                                                              FontWeight.w600),
+                                                    )
+                                                  ],
+                                                ),
                                               ),
-                                            ),
-                                            Expanded(
-                                              child: Column(
-                                                children: const [
-                                                  Text(
-                                                    "Profile Views",
-                                                    style: TextStyle(
-                                                        color:
-                                                            Colors.blueAccent,
-                                                        fontSize: 22.0,
-                                                        fontWeight:
-                                                            FontWeight.w600),
-                                                  ),
-                                                  SizedBox(
-                                                    height: 7,
-                                                  ),
-                                                  Text(
-                                                    "2000",
-                                                    style: TextStyle(
-                                                        color: Colors.black,
-                                                        fontSize: 22.0,
-                                                        fontWeight:
-                                                            FontWeight.w600),
-                                                  )
-                                                ],
+                                              Expanded(
+                                                child: Column(
+                                                  children: const [
+                                                    Text(
+                                                      "Profile Views",
+                                                      style: TextStyle(
+                                                          color:
+                                                              Colors.blueAccent,
+                                                          fontSize: 22.0,
+                                                          fontWeight:
+                                                              FontWeight.w600),
+                                                    ),
+                                                    SizedBox(
+                                                      height: 7,
+                                                    ),
+                                                    Text(
+                                                      "2000",
+                                                      style: TextStyle(
+                                                          color: Colors.black,
+                                                          fontSize: 22.0,
+                                                          fontWeight:
+                                                              FontWeight.w600),
+                                                    )
+                                                  ],
+                                                ),
                                               ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 7,
-                                    ),
-                                    Text(
-                                      "About" +
-                                          " " +
-                                          snapshotData.docs[index]['firstName'],
-                                      style: const TextStyle(
-                                          color:
-                                              Color.fromARGB(255, 228, 21, 21),
-                                          fontSize: 22.0,
-                                          fontWeight: FontWeight.w900),
-                                    ),
-                                    const SizedBox(
-                                      height: 20,
-                                    ),
-                                    Ink(
-                                      child: Container(
-                                        child: Center(
-                                          child: Text(
-                                            snapshotData.docs[index]['aboutMe'],
-                                            style: const TextStyle(
-                                                color: Colors.purple,
-                                                fontSize: 20),
+                                            ],
                                           ),
                                         ),
-                                        decoration: BoxDecoration(
-                                            border: Border.all(
-                                                color: Colors.deepPurple),
-                                            borderRadius:
-                                                BorderRadius.circular(12)),
                                       ),
-                                    )
-                                  ],
+                                      const SizedBox(
+                                        height: 7,
+                                      ),
+                                      Text(
+                                        "About" +
+                                            " " +
+                                            snapshotData.docs[index]
+                                                ['firstName'],
+                                        style: const TextStyle(
+                                            color: Color.fromARGB(
+                                                255, 228, 21, 21),
+                                            fontSize: 22.0,
+                                            fontWeight: FontWeight.w900),
+                                      ),
+                                      const SizedBox(
+                                        height: 20,
+                                      ),
+                                      Ink(
+                                        child: Container(
+                                          child: Center(
+                                            child: Text(
+                                              snapshotData.docs[index]
+                                                  ['aboutMe'],
+                                              style: const TextStyle(
+                                                  color: Colors.purple,
+                                                  fontSize: 20),
+                                            ),
+                                          ),
+                                          decoration: BoxDecoration(
+                                              border: Border.all(
+                                                  color: Colors.deepPurple),
+                                              borderRadius:
+                                                  BorderRadius.circular(12)),
+                                        ),
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
+                              floatingActionButton: FloatingActionButton(
+                                onPressed: () {},
+                                child: const Icon(Icons.chat),
+                              ),
                             ),
-                            floatingActionButton: FloatingActionButton(
-                              onPressed: () {},
-                              child: const Icon(Icons.chat),
-                            ),
+                          );
+                        }));
+                      },
+                      leading: const CircleAvatar(
+                        backgroundImage:
+                            AssetImage('assets/images.download.png'),
+                      ),
+                      title: Text(
+                        snapshotData.docs[index]['firstName'] +
+                            ' ' +
+                            snapshotData.docs[index]['lastName'],
+                        style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      subtitle: Column(
+                        children: [
+                          Row(
+                            children: [
+                              const Icon(
+                                Icons.location_city,
+                                color: Colors.white,
+                              ),
+                              Text(
+                                snapshotData.docs[index]['city'] +
+                                    "                         " +
+                                    snapshotData.docs[index]['skills']
+                                        .toString()
+                                        .toUpperCase(),
+                                style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ],
                           ),
-                        );
-                      }));
-                    },
-                    leading: const CircleAvatar(
-                      backgroundImage: AssetImage('assets/images.download.png'),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                snapshotData.docs[index]['aboutMe']
+                                        .toString()
+                                        .substring(0, 50) +
+                                    "...",
+                                style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold),
+                              )
+                            ],
+                          )
+                        ],
+                      ),
                     ),
-                    title: Text(
-                      snapshotData.docs[index]['firstName'] +
-                          ' ' +
-                          snapshotData.docs[index]['lastName'],
-                      style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    subtitle: Column(
-                      children: [
-                        Row(
-                          children: [
-                            const Icon(
-                              Icons.location_city,
-                              color: Colors.white,
-                            ),
-                            Text(
-                              snapshotData.docs[index]['city'] +
-                                  "                         " +
-                                  snapshotData.docs[index]['skills']
-                                      .toString()
-                                      .toUpperCase(),
-                              style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              snapshotData.docs[index]['aboutMe']
-                                      .toString()
-                                      .substring(0, 50) +
-                                  "...",
-                              style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.bold),
-                            )
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                );
-              }),
+                  );
+                }),
+          ),
         ),
       );
     }
@@ -458,20 +471,24 @@ class _SearchPageState extends State<SearchPage> {
               ListView(
                 shrinkWrap: true,
                 children: [
-                  isFound
-                      ? SearchData()
-                      : Container(
-                          child: const Center(
-                            child: Padding(
-                              padding: EdgeInsets.all(80.0),
-                              child: Text(
-                                "Search Here",
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 40),
+                  SingleChildScrollView(
+                    child: isFound
+                        ? SearchData()
+                        : SingleChildScrollView(
+                            child: Container(
+                              child: const Center(
+                                child: Padding(
+                                  padding: EdgeInsets.all(80.0),
+                                  child: Text(
+                                    "Search Here",
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 40),
+                                  ),
+                                ),
                               ),
                             ),
                           ),
-                        ),
+                  ),
                 ],
               ),
             ],

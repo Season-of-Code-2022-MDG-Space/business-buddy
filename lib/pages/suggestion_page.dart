@@ -14,7 +14,8 @@ class SuggestionPage extends StatefulWidget {
 }
 
 class _SuggestionPageState extends State<SuggestionPage> {
-  CollectionReference profile = FirebaseFirestore.instance.collection('users');
+  Query<Map<String, dynamic>> profile =
+      FirebaseFirestore.instance.collection('users').orderBy("skills");
 
   final _auth = FirebaseAuth.instance;
   User? user = FirebaseAuth.instance.currentUser;
@@ -90,9 +91,6 @@ class _SuggestionPageState extends State<SuggestionPage> {
                     height: 0,
                   );
                 }
-                // if (user!.uid == _auth.currentUser!.uid) {
-                //   return Container(height: 0);
-                // }if
 
                 return Padding(
                   padding: const EdgeInsets.all(10),

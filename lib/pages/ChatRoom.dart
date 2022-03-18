@@ -16,7 +16,7 @@ class ChatRoom extends StatelessWidget {
   void onSendMessage() async {
     if (_message.text.isNotEmpty) {
       Map<String, dynamic> messages = {
-        "sendby": _auth.currentUser?.displayName,
+        "sendby": _auth.currentUser!.displayName,
         "message": _message.text,
         "type": "text",
         "time": FieldValue.serverTimestamp(),
