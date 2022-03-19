@@ -10,7 +10,6 @@ import 'package:projectt/pages/suggestion_page.dart';
 
 class RegScreen extends StatefulWidget {
   const RegScreen({Key? key}) : super(key: key);
-
   @override
   _RegScreenState createState() => _RegScreenState();
 }
@@ -502,6 +501,7 @@ class _RegScreenState extends State<RegScreen> {
       await _auth
           .createUserWithEmailAndPassword(email: email, password: password)
           .then((value) {
+        value.user!.updateProfile(displayName: firstNameditingcontroller.text);
         postDetailsToFireStore();
         Navigator.pushNamed(context, "/dash");
       }).catchError((e) {
@@ -513,11 +513,11 @@ class _RegScreenState extends State<RegScreen> {
   void postDetailsToFireStore() async {
     //calling our firebase
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-    User? user = _auth.currentUser;
+    User user = _auth.currentUser!;
     UserModel userModel = UserModel();
     //writng data
 
-    userModel.email = user!.email;
+    userModel.email = user.email;
     userModel.uid = user.uid;
     userModel.firstName = firstNameditingcontroller.text;
     userModel.lastName = lastNameditingcontroller.text;

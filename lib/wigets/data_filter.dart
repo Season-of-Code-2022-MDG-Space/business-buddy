@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:projectt/model/user_model.dart';
 
 class DataFilter extends GetxController {
   Future getData(String collection) async {
@@ -37,6 +38,13 @@ class DataFilter extends GetxController {
     return FirebaseFirestore.instance
         .collection('users')
         .where('pastexp', isGreaterThanOrEqualTo: queryString)
+        .get();
+  }
+
+  Future queryData5(String queryString) async {
+    return FirebaseFirestore.instance
+        .collection('users')
+        .where('firstName', isGreaterThanOrEqualTo: queryString)
         .get();
   }
 }
