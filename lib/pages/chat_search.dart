@@ -81,7 +81,7 @@ class _ChatsSearchState extends State<ChatsSearch> {
                     child: TextField(
                       controller: _search,
                       decoration: InputDecoration(
-                        hintText: "Search",
+                        hintText: "Search by Email",
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
