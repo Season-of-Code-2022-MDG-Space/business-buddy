@@ -35,32 +35,30 @@ class _MyDrawerState extends State<MyDrawer> {
   Widget build(BuildContext context) {
     return Drawer(
       child: Container(
-        color: Colors.deepPurple,
+        color: Colors.black54,
         child: ListView(
           children: [
             DrawerHeader(
-                decoration: BoxDecoration(color: Colors.blue),
-                padding: EdgeInsets.all(0),
+                decoration: const BoxDecoration(color: Colors.red),
+                padding: const EdgeInsets.all(0),
                 child: UserAccountsDrawerHeader(
                     margin: EdgeInsets.zero,
                     accountName: Text(
                         "${userModel.firstName} " " ${userModel.lastName}"),
                     // ignore: prefer_const_constructors
                     accountEmail: Text("${userModel.email}"),
-                    currentAccountPicture: CircleAvatar(
+                    currentAccountPicture: const CircleAvatar(
                       backgroundImage: AssetImage("assets/images/p6.png"),
-                    )
-                    // Image.asset("assets/images/lap_back5.jpg"),
-                    )),
+                    ))),
             ListTile(
               onTap: () {
                 Navigator.pushNamed(context, "/dash");
               },
-              leading: Icon(
+              leading: const Icon(
                 CupertinoIcons.home,
                 color: Colors.white,
               ),
-              title: Text(
+              title: const Text(
                 "Profile",
                 style: TextStyle(fontSize: 13, color: Colors.white),
               ),
@@ -69,21 +67,21 @@ class _MyDrawerState extends State<MyDrawer> {
               onTap: () {
                 Navigator.pushNamed(context, "/about");
               },
-              leading: Icon(
+              leading: const Icon(
                 Icons.details,
                 color: Colors.white,
               ),
-              title: Text(
+              title: const Text(
                 "About The App",
                 style: TextStyle(fontSize: 13, color: Colors.white),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             ActionChip(
                 backgroundColor: Colors.redAccent,
-                label: Text("Log Out"),
+                label: const Text("Log Out"),
                 onPressed: () {
                   logout(context);
                 })
@@ -96,6 +94,6 @@ class _MyDrawerState extends State<MyDrawer> {
   Future<void> logout(BuildContext context) async {
     await FirebaseAuth.instance.signOut();
     Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => LoginScreen()));
+        MaterialPageRoute(builder: (context) => const LoginScreen()));
   }
 }

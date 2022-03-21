@@ -229,7 +229,7 @@ class _SuggestionPageState extends State<SuggestionPage> {
                                     Text(
                                       "          & " +
                                           snapshot.data!.docs[index]
-                                              ['education'],
+                                              ['workingHr'],
                                       style: const TextStyle(
                                           fontSize: 18.0,
                                           color:

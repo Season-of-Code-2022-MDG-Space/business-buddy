@@ -116,76 +116,81 @@ class _ChatsSearchState extends State<ChatsSearch> {
                             ),
                           );
                         },
-                        child: Padding(
-                          padding: EdgeInsets.all(8),
-                          child: Container(
-                            child: FittedBox(
-                              child: Material(
-                                color: Colors.white,
-                                elevation: 10,
-                                borderRadius: BorderRadius.circular(22),
-                                shadowColor: const Color(0x802196F3),
-                                child: Row(
-                                  children: [
-                                    Container(
-                                        child: Column(
-                                      children: [
-                                        Text(
-                                          userMap!['firstName'] +
-                                              " " +
-                                              userMap!['lastName'],
-                                          style: const TextStyle(fontSize: 36),
+                        child: Flexible(
+                          child: Padding(
+                            padding: EdgeInsets.all(8),
+                            child: Container(
+                              child: FittedBox(
+                                child: Material(
+                                  color: Colors.white,
+                                  elevation: 10,
+                                  borderRadius: BorderRadius.circular(22),
+                                  shadowColor: const Color(0x802196F3),
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                          child: Column(
+                                        children: [
+                                          Text(
+                                            userMap!['firstName'] +
+                                                " " +
+                                                userMap!['lastName'],
+                                            style:
+                                                const TextStyle(fontSize: 36),
+                                          ),
+                                          const SizedBox(
+                                            height: 10,
+                                          ),
+                                          Row(
+                                            children: [
+                                              const Icon(Icons.location_city),
+                                              Text(
+                                                userMap!['city'],
+                                                style: const TextStyle(
+                                                    fontSize: 24),
+                                              ),
+                                              const SizedBox(
+                                                width: 30,
+                                              ),
+                                              const Icon(
+                                                  Icons.cast_for_education),
+                                              Text(
+                                                userMap!['skills']
+                                                    .toString()
+                                                    .toUpperCase(),
+                                                style: const TextStyle(
+                                                    fontSize: 24,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              )
+                                            ],
+                                          ),
+                                          const SizedBox(
+                                            height: 20,
+                                          ),
+                                          Text(
+                                            userMap!['aboutMe']
+                                                    .toString()
+                                                    .substring(0, 30) +
+                                                "... ",
+                                            style:
+                                                const TextStyle(fontSize: 28),
+                                          )
+                                        ],
+                                      )),
+                                      Container(
+                                        width: 250,
+                                        height: 400,
+                                        child: const ClipRect(
+                                          child: Image(
+                                            image: AssetImage(
+                                                'assets/images/download.png'),
+                                            height: 30,
+                                          ),
                                         ),
-                                        const SizedBox(
-                                          height: 10,
-                                        ),
-                                        Row(
-                                          children: [
-                                            const Icon(Icons.location_city),
-                                            Text(
-                                              userMap!['city'],
-                                              style:
-                                                  const TextStyle(fontSize: 24),
-                                            ),
-                                            const SizedBox(
-                                              width: 30,
-                                            ),
-                                            const Icon(
-                                                Icons.cast_for_education),
-                                            Text(
-                                              userMap!['skills']
-                                                  .toString()
-                                                  .toUpperCase(),
-                                              style: const TextStyle(
-                                                  fontSize: 24,
-                                                  fontWeight: FontWeight.bold),
-                                            )
-                                          ],
-                                        ),
-                                        const SizedBox(
-                                          height: 20,
-                                        ),
-                                        Text(
-                                          userMap!['aboutMe']
-                                                  .toString()
-                                                  .substring(0, 50) +
-                                              "... ",
-                                          style: const TextStyle(fontSize: 28),
-                                        )
-                                      ],
-                                    )),
-                                    Container(
-                                      width: 250,
-                                      height: 400,
-                                      child: const ClipRect(
-                                        child: Image(
-                                          image: AssetImage(
-                                              'assets/images/download.png'),
-                                          height: 30,
-                                        ),
-                                      ),
-                                    )
-                                  ],
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),

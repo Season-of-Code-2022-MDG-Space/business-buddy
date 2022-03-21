@@ -14,39 +14,40 @@ class UserModel {
   String? education;
   String? pastexp;
   String? aboutMe;
+  String? workingHr;
 
-  UserModel({
-    this.uid,
-    this.email,
-    this.firstName,
-    this.lastName,
-    this.age,
-    this.city,
-    this.state,
-    this.contact,
-    this.country,
-    this.skills,
-    this.education,
-    this.pastexp,
-    this.aboutMe,
-  });
+  UserModel(
+      {this.uid,
+      this.email,
+      this.firstName,
+      this.lastName,
+      this.age,
+      this.city,
+      this.state,
+      this.contact,
+      this.country,
+      this.skills,
+      this.education,
+      this.pastexp,
+      this.aboutMe,
+      this.workingHr});
 //taking data from server
   factory UserModel.fromMap(map) {
     return UserModel(
-      uid: map['uid'],
-      email: map['email'],
-      firstName: map['firstName'],
-      lastName: map['lastName'],
-      age: map['age'],
-      city: map['city'],
-      state: map['state'],
-      country: map['country'],
-      skills: map['skills'],
-      contact: map['contact'],
-      education: map['education'],
-      pastexp: map['pastexp'],
-      aboutMe: map['aboutMe'],
-    );
+        uid: map['uid'],
+        email: map['email'],
+        firstName: map['firstName'],
+        lastName: map['lastName'],
+        age: map['age'],
+        city: map['city'],
+        state: map['state'],
+        country: map['country'],
+        skills: map['skills'],
+        contact: map['contact'],
+        education: map['education'],
+        pastexp: map['pastexp'],
+        aboutMe: map['aboutMe'],
+        workingHr: map["workingHr"]);
   }
 //sending data to server
 
@@ -64,7 +65,8 @@ class UserModel {
       'education': education,
       'pastexp': pastexp,
       'aboutMe': aboutMe,
-      'contact': contact
+      'contact': contact,
+      "workingHr": workingHr
     };
   }
 }
