@@ -284,14 +284,14 @@ class _RegScreenState extends State<RegScreen> {
     final skillsField = TextFormField(
       validator: (value) {
         if (value!.isEmpty) {
-          return "Skills Cannot Be Empty";
+          return " Business Skills Cannot Be Empty";
         }
         return null;
       },
       controller: _controller,
       decoration: InputDecoration(
-        labelText: "Please Select Appropriate Skill",
-        hintText: "Skills",
+        labelText: "Please Select Appropriate Business Skill",
+        hintText: " Business Skills",
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(18)),
         contentPadding: EdgeInsets.all(10),
         suffixIcon: PopupMenuButton<String>(

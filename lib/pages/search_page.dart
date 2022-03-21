@@ -119,76 +119,198 @@ class _SearchPageState extends State<SearchPage> {
                                             fontWeight: FontWeight.w600),
                                       ),
                                       const SizedBox(
-                                        height: 10,
+                                        height: 20,
                                       ),
-                                      Text(
-                                        snapshotData.docs[index]['email'],
-                                        style: const TextStyle(
-                                            fontSize: 15.0,
-                                            color: Colors.black45,
-                                            letterSpacing: 2.0,
-                                            fontWeight: FontWeight.w600),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                            color: Colors.blue,
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        height: 44,
+                                        child: Center(
+                                          child: Row(
+                                            children: [
+                                              Text(
+                                                "Email" + " :",
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 22),
+                                              ),
+                                              SizedBox(
+                                                width: 10,
+                                              ),
+                                              Text(
+                                                snapshotData.docs[index]
+                                                    ['email'],
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 20),
+                                              )
+                                            ],
+                                          ),
+                                        ),
                                       ),
                                       const SizedBox(
                                         height: 20,
                                       ),
-                                      Text(
-                                        snapshotData.docs[index]['contact'],
-                                        style: const TextStyle(
-                                            fontSize: 20.0,
-                                            color: Colors.black45,
-                                            letterSpacing: 2.0,
-                                            fontWeight: FontWeight.w600),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                            color: Colors.deepPurple,
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        height: 44,
+                                        child: Center(
+                                          child: Row(
+                                            children: [
+                                              Text(
+                                                "Contact" + " :",
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 22),
+                                              ),
+                                              SizedBox(
+                                                width: 10,
+                                              ),
+                                              Text(
+                                                snapshotData.docs[index]
+                                                    ['contact'],
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 20),
+                                              )
+                                            ],
+                                          ),
+                                        ),
                                       ),
                                       const SizedBox(
                                         height: 10,
                                       ),
-                                      Card(
-                                          margin: const EdgeInsets.symmetric(
-                                              horizontal: 20.0, vertical: 8.0),
-                                          elevation: 2.0,
-                                          child: Padding(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                      vertical: 12,
-                                                      horizontal: 30),
-                                              child: Text(
+                                      Container(
+                                        decoration: BoxDecoration(
+                                            color: Colors.blue,
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        height: 44,
+                                        child: Center(
+                                          child: Row(
+                                            children: [
+                                              Text(
+                                                "Business Field" + " :",
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 22),
+                                              ),
+                                              SizedBox(
+                                                width: 10,
+                                              ),
+                                              Text(
                                                 snapshotData.docs[index]
                                                         ['skills']
                                                     .toString()
                                                     .toUpperCase(),
-                                                style: const TextStyle(
-                                                    letterSpacing: 2.0,
-                                                    fontWeight:
-                                                        FontWeight.w900),
-                                              ))),
-                                      const SizedBox(
-                                        height: 15,
-                                      ),
-                                      Text(
-                                        "        #   " +
-                                            snapshotData.docs[index]
-                                                ['education'],
-                                        style: const TextStyle(
-                                            fontSize: 18.0,
-                                            color: Color.fromARGB(
-                                                115, 176, 11, 218),
-                                            letterSpacing: 1.0,
-                                            fontWeight: FontWeight.w800),
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 20),
+                                              )
+                                            ],
+                                          ),
+                                        ),
                                       ),
                                       const SizedBox(
                                         height: 15,
                                       ),
-                                      Text(
-                                        "          & " +
-                                            snapshotData.docs[index]
-                                                ['education'],
-                                        style: const TextStyle(
-                                            fontSize: 18.0,
-                                            color: Color.fromARGB(
-                                                115, 236, 11, 225),
-                                            letterSpacing: 1.0,
-                                            fontWeight: FontWeight.w800),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                            color: Colors.deepPurple,
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        height: 44,
+                                        child: Center(
+                                          child: Row(
+                                            children: [
+                                              Text(
+                                                "Education" + " :",
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 22),
+                                              ),
+                                              SizedBox(
+                                                width: 10,
+                                              ),
+                                              Text(
+                                                snapshotData.docs[index]
+                                                    ['education'],
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 20),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 15,
+                                      ),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                            color: Colors.blue,
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        height: 44,
+                                        child: Center(
+                                          child: Row(
+                                            children: [
+                                              Text(
+                                                "Past Exp." + " :",
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 22),
+                                              ),
+                                              SizedBox(
+                                                width: 10,
+                                              ),
+                                              Text(
+                                                snapshotData.docs[index]
+                                                    ['pastexp'],
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 20),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        height: 15,
+                                      ),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                            color: Colors.deepPurple,
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        height: 44,
+                                        child: Center(
+                                          child: Row(
+                                            children: [
+                                              Text(
+                                                "Daily Working Hours" + " :",
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 22),
+                                              ),
+                                              SizedBox(
+                                                width: 10,
+                                              ),
+                                              Text(
+                                                snapshotData.docs[index]
+                                                    ['workingHr'],
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 20),
+                                              )
+                                            ],
+                                          ),
+                                        ),
                                       ),
                                       const SizedBox(
                                         height: 15,
@@ -299,7 +421,9 @@ class _SearchPageState extends State<SearchPage> {
                                 ),
                               ),
                               floatingActionButton: FloatingActionButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.pushNamed(context, "/chatUsers");
+                                },
                                 child: const Icon(Icons.chat),
                               ),
                             ),
@@ -425,8 +549,7 @@ class _SearchPageState extends State<SearchPage> {
           title: TextField(
             style: const TextStyle(color: Colors.white),
             decoration: const InputDecoration(
-                hintText: "Search By Skills",
-                hintStyle: TextStyle(color: Colors.white)),
+                hintText: "Search ", hintStyle: TextStyle(color: Colors.white)),
             controller: searchcontroller,
           ),
           backgroundColor: Colors.black,

@@ -119,229 +119,372 @@ class _SuggestionPageState extends State<SuggestionPage> {
                             ),
                             body: SingleChildScrollView(
                               child: SafeArea(
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      decoration: const BoxDecoration(
-                                          image: DecorationImage(
-                                              image: AssetImage(
-                                                  "assets/images/t.png"),
-                                              fit: BoxFit.cover)),
-                                      child: Container(
-                                        width: double.infinity,
-                                        height: 130,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(12.0),
+                                  child: Column(
+                                    children: [
+                                      Container(
+                                        decoration: const BoxDecoration(
+                                            image: DecorationImage(
+                                                image: AssetImage(
+                                                    "assets/images/t.png"),
+                                                fit: BoxFit.cover)),
                                         child: Container(
-                                          alignment: const Alignment(0.0, 2.5),
-                                          child: const CircleAvatar(
-                                            backgroundImage: NetworkImage(
-                                                "Add you profile DP image URL here "),
-                                            radius: 60.0,
+                                          width: double.infinity,
+                                          height: 130,
+                                          child: Container(
+                                            alignment:
+                                                const Alignment(0.0, 2.5),
+                                            child: const CircleAvatar(
+                                              backgroundImage: NetworkImage(
+                                                  "Add you profile DP image URL here "),
+                                              radius: 60.0,
+                                            ),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                    const SizedBox(
-                                      height: 60,
-                                    ),
-                                    Text(
-                                      snapshot.data!.docs[index]['firstName'] +
-                                          " " +
-                                          snapshot.data!.docs[index]
-                                              ['lastName'],
-                                      style: const TextStyle(
-                                          fontSize: 35.0,
-                                          color:
-                                              Color.fromARGB(255, 10, 10, 10),
-                                          letterSpacing: 2.0,
-                                          fontWeight: FontWeight.w400),
-                                    ),
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text(
-                                      snapshot.data!.docs[index]['city'] +
-                                          "," +
-                                          snapshot.data!.docs[index]['country'],
-                                      style: const TextStyle(
-                                          fontSize: 18.0,
-                                          color: Colors.black45,
-                                          letterSpacing: 2.0,
-                                          fontWeight: FontWeight.w600),
-                                    ),
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text(
-                                      snapshot.data!.docs[index]['email'],
-                                      style: const TextStyle(
-                                          fontSize: 15.0,
-                                          color: Colors.black45,
-                                          letterSpacing: 2.0,
-                                          fontWeight: FontWeight.w600),
-                                    ),
-                                    const SizedBox(
-                                      height: 20,
-                                    ),
-                                    Text(
-                                      snapshot.data!.docs[index]['contact'],
-                                      style: const TextStyle(
-                                          fontSize: 20.0,
-                                          color: Colors.black45,
-                                          letterSpacing: 2.0,
-                                          fontWeight: FontWeight.w600),
-                                    ),
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
-                                    Card(
+                                      const SizedBox(
+                                        height: 60,
+                                      ),
+                                      Text(
+                                        snapshot.data!.docs[index]
+                                                ['firstName'] +
+                                            " " +
+                                            snapshot.data!.docs[index]
+                                                ['lastName'],
+                                        style: const TextStyle(
+                                            fontSize: 35.0,
+                                            color:
+                                                Color.fromARGB(255, 10, 10, 10),
+                                            letterSpacing: 2.0,
+                                            fontWeight: FontWeight.w400),
+                                      ),
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
+
+                                      Text(
+                                        snapshot.data!.docs[index]['city'] +
+                                            "," +
+                                            snapshot.data!.docs[index]
+                                                ['country'],
+                                        style: const TextStyle(
+                                            fontSize: 18.0,
+                                            color: Colors.black45,
+                                            letterSpacing: 2.0,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+
+                                      const SizedBox(
+                                        height: 20,
+                                      ),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                            color: Colors.blue,
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        height: 44,
+                                        child: Center(
+                                          child: Row(
+                                            children: [
+                                              Text(
+                                                "Email" + " :",
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 22),
+                                              ),
+                                              SizedBox(
+                                                width: 10,
+                                              ),
+                                              Text(
+                                                snapshot.data!.docs[index]
+                                                    ['email'],
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 20),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      // Text(
+                                      //   snapshot.data!.docs[index]['email'],
+                                      //   style: const TextStyle(
+                                      //       fontSize: 15.0,
+                                      //       color: Colors.black45,
+                                      //       letterSpacing: 2.0,
+                                      //       fontWeight: FontWeight.w600),
+                                      // ),
+                                      const SizedBox(
+                                        height: 20,
+                                      ),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                            color: Colors.deepPurple,
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        height: 44,
+                                        child: Center(
+                                          child: Row(
+                                            children: [
+                                              Text(
+                                                "Contact" + " :",
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 22),
+                                              ),
+                                              SizedBox(
+                                                width: 10,
+                                              ),
+                                              Text(
+                                                snapshot.data!.docs[index]
+                                                    ['contact'],
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 20),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                            color: Colors.blue,
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        height: 44,
+                                        child: Center(
+                                          child: Row(
+                                            children: [
+                                              Text(
+                                                "Business Field" + " :",
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 22),
+                                              ),
+                                              SizedBox(
+                                                width: 10,
+                                              ),
+                                              Text(
+                                                snapshot
+                                                    .data!.docs[index]['skills']
+                                                    .toString()
+                                                    .toUpperCase(),
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 20),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        height: 15,
+                                      ),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                            color: Colors.deepPurple,
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        height: 44,
+                                        child: Center(
+                                          child: Row(
+                                            children: [
+                                              Text(
+                                                "Education" + " :",
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 22),
+                                              ),
+                                              SizedBox(
+                                                width: 10,
+                                              ),
+                                              Text(
+                                                snapshot.data!.docs[index]
+                                                    ['education'],
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 20),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        height: 15,
+                                      ),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                            color: Colors.blue,
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        height: 44,
+                                        child: Center(
+                                          child: Row(
+                                            children: [
+                                              Flexible(
+                                                child: Text(
+                                                  "Past Exp." + " :",
+                                                  style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 22),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: 10,
+                                              ),
+                                              Text(
+                                                snapshot.data!.docs[index]
+                                                    ['pastexp'],
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 20),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                            color: Colors.deepPurple,
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        height: 44,
+                                        child: Center(
+                                          child: Row(
+                                            children: [
+                                              Text(
+                                                "Daily Working Hours" + " :",
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 22),
+                                              ),
+                                              SizedBox(
+                                                width: 10,
+                                              ),
+                                              Text(
+                                                snapshot.data!.docs[index]
+                                                    ['workingHr'],
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 20),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        height: 15,
+                                      ),
+                                      Card(
                                         margin: const EdgeInsets.symmetric(
                                             horizontal: 20.0, vertical: 8.0),
-                                        elevation: 2.0,
                                         child: Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                vertical: 12, horizontal: 30),
-                                            child: Text(
-                                              snapshot
-                                                  .data!.docs[index]['skills']
-                                                  .toString()
-                                                  .toUpperCase(),
-                                              style: const TextStyle(
-                                                  letterSpacing: 2.0,
-                                                  fontWeight: FontWeight.w900),
-                                            ))),
-                                    const SizedBox(
-                                      height: 15,
-                                    ),
-                                    Text(
-                                      "        #   " +
-                                          snapshot.data!.docs[index]
-                                              ['education'],
-                                      style: const TextStyle(
-                                          fontSize: 18.0,
-                                          color:
-                                              Color.fromARGB(115, 176, 11, 218),
-                                          letterSpacing: 1.0,
-                                          fontWeight: FontWeight.w800),
-                                    ),
-                                    const SizedBox(
-                                      height: 15,
-                                    ),
-                                    Text(
-                                      "          & " +
-                                          snapshot.data!.docs[index]
-                                              ['workingHr'],
-                                      style: const TextStyle(
-                                          fontSize: 18.0,
-                                          color:
-                                              Color.fromARGB(115, 236, 11, 225),
-                                          letterSpacing: 1.0,
-                                          fontWeight: FontWeight.w800),
-                                    ),
-                                    const SizedBox(
-                                      height: 15,
-                                    ),
-                                    Card(
-                                      margin: const EdgeInsets.symmetric(
-                                          horizontal: 20.0, vertical: 8.0),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceEvenly,
-                                          children: [
-                                            Expanded(
-                                              child: Column(
-                                                children: [
-                                                  const Text(
-                                                    "Age",
-                                                    style: TextStyle(
-                                                        color:
-                                                            Colors.blueAccent,
-                                                        fontSize: 22.0,
-                                                        fontWeight:
-                                                            FontWeight.w600),
-                                                  ),
-                                                  const SizedBox(
-                                                    height: 7,
-                                                  ),
-                                                  Text(
-                                                    snapshot.data!.docs[index]
-                                                        ['age'],
-                                                    style: const TextStyle(
-                                                        color: Colors.black,
-                                                        fontSize: 22.0,
-                                                        fontWeight:
-                                                            FontWeight.w600),
-                                                  )
-                                                ],
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceEvenly,
+                                            children: [
+                                              Expanded(
+                                                child: Column(
+                                                  children: [
+                                                    const Text(
+                                                      "Age",
+                                                      style: TextStyle(
+                                                          color:
+                                                              Colors.blueAccent,
+                                                          fontSize: 22.0,
+                                                          fontWeight:
+                                                              FontWeight.w600),
+                                                    ),
+                                                    const SizedBox(
+                                                      height: 7,
+                                                    ),
+                                                    Text(
+                                                      snapshot.data!.docs[index]
+                                                          ['age'],
+                                                      style: const TextStyle(
+                                                          color: Colors.black,
+                                                          fontSize: 22.0,
+                                                          fontWeight:
+                                                              FontWeight.w600),
+                                                    )
+                                                  ],
+                                                ),
                                               ),
-                                            ),
-                                            Expanded(
-                                              child: Column(
-                                                children: const [
-                                                  Text(
-                                                    "Profile Views",
-                                                    style: TextStyle(
-                                                        color:
-                                                            Colors.blueAccent,
-                                                        fontSize: 22.0,
-                                                        fontWeight:
-                                                            FontWeight.w600),
-                                                  ),
-                                                  SizedBox(
-                                                    height: 7,
-                                                  ),
-                                                  Text(
-                                                    "2000",
-                                                    style: TextStyle(
-                                                        color: Colors.black,
-                                                        fontSize: 22.0,
-                                                        fontWeight:
-                                                            FontWeight.w600),
-                                                  )
-                                                ],
+                                              Expanded(
+                                                child: Column(
+                                                  children: const [
+                                                    Text(
+                                                      "Profile Views",
+                                                      style: TextStyle(
+                                                          color:
+                                                              Colors.blueAccent,
+                                                          fontSize: 22.0,
+                                                          fontWeight:
+                                                              FontWeight.w600),
+                                                    ),
+                                                    SizedBox(
+                                                      height: 7,
+                                                    ),
+                                                    Text(
+                                                      "2000",
+                                                      style: TextStyle(
+                                                          color: Colors.black,
+                                                          fontSize: 22.0,
+                                                          fontWeight:
+                                                              FontWeight.w600),
+                                                    )
+                                                  ],
+                                                ),
                                               ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 7,
-                                    ),
-                                    Text(
-                                      "About" +
-                                          " " +
-                                          snapshot.data!.docs[index]
-                                              ['firstName'],
-                                      style: const TextStyle(
-                                          color:
-                                              Color.fromARGB(255, 228, 21, 21),
-                                          fontSize: 22.0,
-                                          fontWeight: FontWeight.w900),
-                                    ),
-                                    const SizedBox(
-                                      height: 20,
-                                    ),
-                                    Ink(
-                                      child: Container(
-                                        child: Center(
-                                          child: Text(
-                                            snapshot.data!.docs[index]
-                                                ['aboutMe'],
-                                            style: const TextStyle(
-                                                color: Colors.purple,
-                                                fontSize: 20),
+                                            ],
                                           ),
                                         ),
-                                        decoration: BoxDecoration(
-                                            border: Border.all(
-                                                color: Colors.deepPurple),
-                                            borderRadius:
-                                                BorderRadius.circular(12)),
                                       ),
-                                    )
-                                  ],
+                                      const SizedBox(
+                                        height: 7,
+                                      ),
+                                      Text(
+                                        "About" +
+                                            " " +
+                                            snapshot.data!.docs[index]
+                                                ['firstName'],
+                                        style: const TextStyle(
+                                            color: Color.fromARGB(
+                                                255, 228, 21, 21),
+                                            fontSize: 22.0,
+                                            fontWeight: FontWeight.w900),
+                                      ),
+                                      const SizedBox(
+                                        height: 20,
+                                      ),
+                                      Ink(
+                                        child: Container(
+                                          child: Center(
+                                            child: Text(
+                                              snapshot.data!.docs[index]
+                                                  ['aboutMe'],
+                                              style: const TextStyle(
+                                                  color: Colors.purple,
+                                                  fontSize: 20),
+                                            ),
+                                          ),
+                                          decoration: BoxDecoration(
+                                              border: Border.all(
+                                                  color: Colors.deepPurple),
+                                              borderRadius:
+                                                  BorderRadius.circular(12)),
+                                        ),
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
