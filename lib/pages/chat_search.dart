@@ -81,7 +81,7 @@ class _ChatsSearchState extends State<ChatsSearch> {
                     child: TextField(
                       controller: _search,
                       decoration: InputDecoration(
-                        hintText: "Search",
+                        hintText: "Search by Email",
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -101,7 +101,7 @@ class _ChatsSearchState extends State<ChatsSearch> {
                   height: size.height / 30,
                 ),
                 userMap != null
-                    ? ListTile(
+                    ? InkWell(
                         onTap: () {
                           String roomId = chatRoomId(
                               _auth.currentUser?.displayName ?? ".",
@@ -116,18 +116,86 @@ class _ChatsSearchState extends State<ChatsSearch> {
                             ),
                           );
                         },
-                        leading:
-                            const Icon(Icons.account_box, color: Colors.black),
-                        title: Text(
-                          userMap!['firstName'],
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 17,
-                            fontWeight: FontWeight.w500,
+                        child: Flexible(
+                          child: Padding(
+                            padding: EdgeInsets.all(8),
+                            child: Container(
+                              child: FittedBox(
+                                child: Material(
+                                  color: Colors.white,
+                                  elevation: 10,
+                                  borderRadius: BorderRadius.circular(22),
+                                  shadowColor: const Color(0x802196F3),
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                          child: Column(
+                                        children: [
+                                          Text(
+                                            userMap!['firstName'] +
+                                                " " +
+                                                userMap!['lastName'],
+                                            style:
+                                                const TextStyle(fontSize: 36),
+                                          ),
+                                          const SizedBox(
+                                            height: 10,
+                                          ),
+                                          Row(
+                                            children: [
+                                              const Icon(Icons.location_city),
+                                              Text(
+                                                userMap!['city'],
+                                                style: const TextStyle(
+                                                    fontSize: 24),
+                                              ),
+                                              const SizedBox(
+                                                width: 30,
+                                              ),
+                                              const Icon(
+                                                  Icons.cast_for_education),
+                                              Text(
+                                                userMap!['skills']
+                                                    .toString()
+                                                    .toUpperCase(),
+                                                style: const TextStyle(
+                                                    fontSize: 24,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              )
+                                            ],
+                                          ),
+                                          const SizedBox(
+                                            height: 20,
+                                          ),
+                                          Text(
+                                            userMap!['aboutMe']
+                                                    .toString()
+                                                    .substring(0, 30) +
+                                                "... ",
+                                            style:
+                                                const TextStyle(fontSize: 28),
+                                          )
+                                        ],
+                                      )),
+                                      Container(
+                                        width: 250,
+                                        height: 400,
+                                        child: const ClipRect(
+                                          child: Image(
+                                            image: AssetImage(
+                                                'assets/images/download.png'),
+                                            height: 30,
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
                           ),
                         ),
-                        subtitle: Text(userMap!['email']),
-                        trailing: const Icon(Icons.chat, color: Colors.black),
                       )
                     : Container(),
               ],

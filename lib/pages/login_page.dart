@@ -1,8 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:projectt/pages/dashboard_board.dart';
-import 'package:projectt/pages/home_page.dart';
 import 'package:projectt/pages/reg_page.dart';
 import 'package:projectt/pages/suggestion_page.dart';
 
@@ -16,8 +14,8 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   //form key of Form
   final _formkey = GlobalKey<FormState>();
-  final TextEditingController emailController = new TextEditingController();
-  final TextEditingController passwordController = new TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   final _auth = FirebaseAuth.instance;
 
@@ -42,10 +40,10 @@ class _LoginScreenState extends State<LoginScreen> {
       },
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
-          prefixIcon: Icon(Icons.mail),
+          prefixIcon: const Icon(Icons.mail),
           hintText: ("Enter Email"),
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(18)),
-          contentPadding: EdgeInsets.all(10)),
+          contentPadding: const EdgeInsets.all(10)),
     );
 
     final passwordField = TextFormField(
@@ -66,10 +64,10 @@ class _LoginScreenState extends State<LoginScreen> {
       },
       textInputAction: TextInputAction.done,
       decoration: InputDecoration(
-          prefixIcon: Icon(Icons.password),
+          prefixIcon: const Icon(Icons.password),
           hintText: ("Enter Password"),
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(18)),
-          contentPadding: EdgeInsets.all(10)),
+          contentPadding: const EdgeInsets.all(10)),
     );
 
     final loginButton = Material(
@@ -77,7 +75,7 @@ class _LoginScreenState extends State<LoginScreen> {
       elevation: 5,
       borderRadius: BorderRadius.circular(30),
       child: MaterialButton(
-        padding: EdgeInsets.all(20),
+        padding: const EdgeInsets.all(20),
         onPressed: () {
           // Navigator.pushNamed(context, "/home");
           signIn(emailController.text, passwordController.text);
@@ -109,34 +107,35 @@ class _LoginScreenState extends State<LoginScreen> {
                           fit: BoxFit.cover,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 60,
                       ),
                       emailField,
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       passwordField,
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       loginButton,
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
                       Padding(
                         padding: const EdgeInsets.all(30.0),
                         child: Row(
                           children: [
-                            Text("I don't have an account ? "),
+                            const Text("I don't have an account ? "),
                             GestureDetector(
                               onTap: () {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => RegScreen()));
+                                        builder: (context) =>
+                                            const RegScreen()));
                               },
-                              child: Text(
+                              child: const Text(
                                 "Sign Up",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
@@ -164,7 +163,7 @@ class _LoginScreenState extends State<LoginScreen> {
         Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (context) => const SuggestionPage()));
       }).catchError((e) {
-        Fluttertoast.showToast(msg: " login error");
+        Fluttertoast.showToast(msg: e.toString());
       });
     }
   }

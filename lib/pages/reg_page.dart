@@ -4,8 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:projectt/model/user_model.dart';
-import 'package:projectt/pages/dashboard_board.dart';
-import 'package:projectt/pages/home_page.dart';
+
 import 'package:projectt/pages/suggestion_page.dart';
 
 class RegScreen extends StatefulWidget {
@@ -18,11 +17,11 @@ class _RegScreenState extends State<RegScreen> {
   final _auth = FirebaseAuth.instance;
 
   final _formkey = GlobalKey<FormState>();
-  final firstNameditingcontroller = new TextEditingController();
-  final lastNameditingcontroller = new TextEditingController();
-  final emailController = new TextEditingController();
-  final passwordController = new TextEditingController();
-  final confirmpasswordController = new TextEditingController();
+  final firstNameditingcontroller = TextEditingController();
+  final lastNameditingcontroller = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final confirmpasswordController = TextEditingController();
   final phonecontroller = TextEditingController();
   final citycontroller = TextEditingController();
   final statecontroller = TextEditingController();
@@ -32,6 +31,7 @@ class _RegScreenState extends State<RegScreen> {
   final pastexpcontroller = TextEditingController();
   final aboutMecontroller = TextEditingController();
   final agecontroller = TextEditingController();
+  final workingHrcontroller = TextEditingController();
   final TextEditingController _controller = TextEditingController();
   var items = [
     'agency',
@@ -54,6 +54,7 @@ class _RegScreenState extends State<RegScreen> {
     'web Site(news/affiliate)',
     'other'
   ];
+  var items2 = ["0-3 Hours", "3-5 Hours", "5-7 Hours", "7-9 Hours", "9+ Hours"];
 
   @override
   Widget build(BuildContext context) {
@@ -283,14 +284,14 @@ class _RegScreenState extends State<RegScreen> {
     final skillsField = TextFormField(
       validator: (value) {
         if (value!.isEmpty) {
-          return "Skills Cannot Be Empty";
+          return " Business Skills Cannot Be Empty";
         }
         return null;
       },
       controller: _controller,
       decoration: InputDecoration(
-        labelText: "Please Select Appropriate Skill",
-        hintText: "Skills",
+        labelText: "Please Select Appropriate Business Skill",
+        hintText: " Business Skills",
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(18)),
         contentPadding: EdgeInsets.all(10),
         suffixIcon: PopupMenuButton<String>(
@@ -300,6 +301,37 @@ class _RegScreenState extends State<RegScreen> {
           },
           itemBuilder: (BuildContext context) {
             return items.map<PopupMenuItem<String>>((String value) {
+              return new PopupMenuItem(
+                  child: new Text(
+                    value,
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  value: value);
+            }).toList();
+          },
+        ),
+      ),
+    );
+    final workingHrField = TextFormField(
+      validator: (value) {
+        if (value!.isEmpty) {
+          return "Working Hours Cannot Be Empty";
+        }
+        return null;
+      },
+      controller: workingHrcontroller,
+      decoration: InputDecoration(
+        labelText: "Please Select Appropriate Working Hours",
+        hintText: "Daily Working Hours",
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(18)),
+        contentPadding: EdgeInsets.all(10),
+        suffixIcon: PopupMenuButton<String>(
+          icon: const Icon(Icons.arrow_drop_down),
+          onSelected: (String value) {
+            workingHrcontroller.text = value;
+          },
+          itemBuilder: (BuildContext context) {
+            return items2.map<PopupMenuItem<String>>((String value) {
               return new PopupMenuItem(
                   child: new Text(
                     value,
@@ -478,6 +510,10 @@ class _RegScreenState extends State<RegScreen> {
                       SizedBox(
                         height: 10,
                       ),
+                      workingHrField,
+                      SizedBox(
+                        height: 10,
+                      ),
                       pastexpField,
                       SizedBox(
                         height: 10,
@@ -530,6 +566,7 @@ class _RegScreenState extends State<RegScreen> {
     userModel.education = educationcontroller.text;
     userModel.pastexp = pastexpcontroller.text;
     userModel.aboutMe = aboutMecontroller.text;
+    userModel.workingHr = workingHrcontroller.text;
 
     await firebaseFirestore
         .collection("users")
