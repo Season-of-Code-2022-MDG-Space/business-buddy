@@ -136,8 +136,8 @@ class _SuggestionPageState extends State<SuggestionPage> {
                                             alignment:
                                                 const Alignment(0.0, 2.5),
                                             child: const CircleAvatar(
-                                              backgroundImage: NetworkImage(
-                                                  "Add you profile DP image URL here "),
+                                              backgroundImage: AssetImage(
+                                                  "assets/images/download.png "),
                                               radius: 60.0,
                                             ),
                                           ),

@@ -139,12 +139,15 @@ class _DashboardState extends State<Dashboard> {
                 ))
           ],
         ),
+        SizedBox(
+          height: 20,
+        ),
         Expanded(
             child: Container(
           decoration: const BoxDecoration(
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(30), topRight: Radius.circular(30)),
-              color: Colors.cyanAccent),
+              color: Colors.amberAccent),
           child: SingleChildScrollView(
             child: Form(
               key: _formkey,
